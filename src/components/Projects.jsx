@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 
 const categories = ['All', 'AI & Machine Learning', 'Systems & Algorithms']
@@ -98,8 +98,26 @@ const projects = [
 
 function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All')
-  const [activeViewTab, setActiveViewTab] = useState({}) // { [projectId]: 'output' | 'metrics' }
-  const [lightboxImage, setLightboxImage] = useState(null)
+  const [activeViewTab, setActiveViewTab] = useState({}) // { [projectId]: 'output' | 'secondary' }
+  const [lightboxData, setLightboxData] = useState(null) // { project, view: 'output' | 'secondary' }
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!lightboxData) return
+      if (e.key === 'Escape') {
+        setLightboxData(null)
+      } else if (lightboxData.project.secondaryImage) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          const nextView = lightboxData.view === 'output' ? 'secondary' : 'output'
+          setLightboxData((prev) => (prev ? { ...prev, view: nextView } : null))
+          setActiveViewTab((prev) => ({ ...prev, [lightboxData.project.id]: nextView }))
+        }
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [lightboxData])
 
   const filteredProjects =
     selectedCategory === 'All'
@@ -298,7 +316,7 @@ function Projects() {
 
                         <button
                           type="button"
-                          onClick={() => setLightboxImage({ src: project.realImage, title: project.realImageTitle })}
+                          onClick={() => setLightboxData({ project, view: currentView })}
                           className="flex items-center gap-1.5 rounded-xl border border-cyan-400/30 bg-cyan-950/40 px-4 py-2.5 text-xs font-semibold text-cyan-300 transition-all hover:bg-cyan-900/40"
                         >
                           <span>🔎 Full Output View</span>
@@ -324,7 +342,7 @@ function Projects() {
                                 type="button"
                                 onClick={() => setActiveViewTab((prev) => ({ ...prev, [project.id]: 'output' }))}
                                 className={`rounded px-2 py-0.5 font-mono text-[10px] transition-colors ${
-                                  currentView === 'output' ? 'bg-cyan-500/20 text-cyan-300 font-bold' : 'text-slate-400'
+                                  currentView === 'output' ? 'bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-400/30' : 'text-slate-400 hover:text-white'
                                 }`}
                               >
                                 View 1
@@ -333,7 +351,7 @@ function Projects() {
                                 type="button"
                                 onClick={() => setActiveViewTab((prev) => ({ ...prev, [project.id]: 'secondary' }))}
                                 className={`rounded px-2 py-0.5 font-mono text-[10px] transition-colors ${
-                                  currentView === 'secondary' ? 'bg-cyan-500/20 text-cyan-300 font-bold' : 'text-slate-400'
+                                  currentView === 'secondary' ? 'bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-400/30' : 'text-slate-400 hover:text-white'
                                 }`}
                               >
                                 View 2
@@ -345,12 +363,7 @@ function Projects() {
                         {/* Interactive Image Preview with zoom trigger */}
                         <div
                           className="relative cursor-pointer group/img overflow-hidden bg-black/40 flex items-center justify-center p-2 min-h-[220px]"
-                          onClick={() =>
-                            setLightboxImage({
-                              src: currentView === 'output' ? project.realImage : project.secondaryImage,
-                              title: currentView === 'output' ? project.realImageTitle : project.secondaryImageTitle,
-                            })
-                          }
+                          onClick={() => setLightboxData({ project, view: currentView })}
                         >
                           <img
                             src={currentView === 'output' ? project.realImage : project.secondaryImage}
@@ -381,46 +394,125 @@ function Projects() {
         </motion.div>
       </div>
 
-      {/* Full-Screen Output Lightbox Modal */}
+      {/* Full-Screen Output Lightbox Modal with in-modal View Switching */}
       <AnimatePresence>
-        {lightboxImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setLightboxImage(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-md"
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-h-[90vh] max-w-5xl overflow-hidden rounded-2xl border border-cyan-400/30 bg-slate-950 p-4 shadow-2xl"
-            >
-              <div className="mb-3 flex items-center justify-between border-b border-slate-800 pb-2">
-                <span className="font-mono text-xs text-cyan-300">
-                  {lightboxImage.title}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setLightboxImage(null)}
-                  className="rounded-lg bg-slate-800 px-2.5 py-1 font-mono text-xs text-slate-300 hover:bg-slate-700 hover:text-white"
-                >
-                  ✕ Close (ESC)
-                </button>
-              </div>
+        {lightboxData && (() => {
+          const currentImg = lightboxData.view === 'output' ? lightboxData.project.realImage : lightboxData.project.secondaryImage
+          const currentTitle = lightboxData.view === 'output' ? lightboxData.project.realImageTitle : lightboxData.project.secondaryImageTitle
 
-              <div className="max-h-[75vh] overflow-auto flex items-center justify-center">
-                <img
-                  src={lightboxImage.src}
-                  alt={lightboxImage.title}
-                  className="max-h-full max-w-full rounded-lg object-contain"
-                />
-              </div>
+          return (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setLightboxData(null)}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-md"
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-2xl border border-cyan-400/30 bg-slate-950 p-4 shadow-2xl"
+              >
+                {/* Modal Topbar with View 1 / View 2 toggle */}
+                <div className="mb-3 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs text-cyan-300 font-bold">
+                      {lightboxData.project.title}
+                    </span>
+                    <span className="text-slate-600">/</span>
+                    <span className="font-mono text-xs text-slate-400">
+                      {currentTitle}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    {lightboxData.project.secondaryImage && (
+                      <div className="flex items-center rounded-lg border border-slate-800 bg-slate-900/80 p-1">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setLightboxData((prev) => ({ ...prev, view: 'output' }))
+                            setActiveViewTab((prev) => ({ ...prev, [lightboxData.project.id]: 'output' }))
+                          }}
+                          className={`rounded px-3 py-1 font-mono text-xs transition-colors ${
+                            lightboxData.view === 'output'
+                              ? 'bg-cyan-500/25 text-cyan-300 font-bold border border-cyan-400/40'
+                              : 'text-slate-400 hover:text-white'
+                          }`}
+                        >
+                          View 1: Primary
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setLightboxData((prev) => ({ ...prev, view: 'secondary' }))
+                            setActiveViewTab((prev) => ({ ...prev, [lightboxData.project.id]: 'secondary' }))
+                          }}
+                          className={`rounded px-3 py-1 font-mono text-xs transition-colors ${
+                            lightboxData.view === 'secondary'
+                              ? 'bg-cyan-500/25 text-cyan-300 font-bold border border-cyan-400/40'
+                              : 'text-slate-400 hover:text-white'
+                          }`}
+                        >
+                          View 2: Secondary
+                        </button>
+                      </div>
+                    )}
+
+                    <button
+                      type="button"
+                      onClick={() => setLightboxData(null)}
+                      className="rounded-lg bg-slate-800 px-3 py-1.5 font-mono text-xs text-slate-300 hover:bg-slate-700 hover:text-white"
+                    >
+                      ✕ Close (ESC)
+                    </button>
+                  </div>
+                </div>
+
+                {/* Modal Main Display Area with optional left/right flip arrows */}
+                <div className="relative max-h-[75vh] min-h-[300px] overflow-auto flex items-center justify-center bg-black/40 rounded-xl p-2">
+                  {lightboxData.project.secondaryImage && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const nextView = lightboxData.view === 'output' ? 'secondary' : 'output'
+                          setLightboxData((prev) => ({ ...prev, view: nextView }))
+                          setActiveViewTab((prev) => ({ ...prev, [lightboxData.project.id]: nextView }))
+                        }}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-slate-900/80 p-2.5 text-white backdrop-blur-md transition-all hover:scale-110 hover:bg-cyan-500/20"
+                        title="Previous View"
+                      >
+                        ◀
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const nextView = lightboxData.view === 'output' ? 'secondary' : 'output'
+                          setLightboxData((prev) => ({ ...prev, view: nextView }))
+                          setActiveViewTab((prev) => ({ ...prev, [lightboxData.project.id]: nextView }))
+                        }}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-slate-900/80 p-2.5 text-white backdrop-blur-md transition-all hover:scale-110 hover:bg-cyan-500/20"
+                        title="Next View"
+                      >
+                        ▶
+                      </button>
+                    </>
+                  )}
+
+                  <img
+                    src={currentImg}
+                    alt={currentTitle}
+                    className="max-h-[72vh] max-w-full rounded-lg object-contain"
+                  />
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
+          )
+        })()}
       </AnimatePresence>
     </section>
   )

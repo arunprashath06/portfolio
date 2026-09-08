@@ -6,7 +6,7 @@ const summerCertificate = {
   subtitle: 'Summer Training Certification',
   issuer: 'Lovely Professional University',
   date: 'July 2026',
-  file: '/certificates/computer-programming.pdf',
+  file: '/certificates/summer training.pdf',
   downloadName: 'LPU_Data_AI_Engineer_Summer_Training_Certificate.pdf',
 }
 

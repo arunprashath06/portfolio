@@ -15,7 +15,7 @@ const certificates = [
     badge: 'Summer Training Program',
     issuer: 'Lovely Professional University',
     date: 'July 2026',
-    file: '/certificates/computer-programming.pdf',
+    file: '/certificates/summer training.pdf',
     downloadName: 'LPU_Data_AI_Engineer_Certificate.pdf',
     type: 'pdf',
     credentialId: 'LPU-DAIE-2026',
