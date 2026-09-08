@@ -27,19 +27,20 @@ body {
   color: white;
 }
 
-body {
-  cursor: none;
+/* Native smooth cursor and modern scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-a,
-button {
-  cursor: none;
+::-webkit-scrollbar-track {
+  background: #030712;
 }
 
-@media (pointer: coarse) {
-  body,
-  a,
-  button {
-    cursor: auto;
-  }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.4);
 }

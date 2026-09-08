@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'motion/react'
 import { useForm } from '@formspree/react'
 
@@ -8,6 +9,7 @@ const contactLinks = [
     label: 'Email',
     value: 'arunprashathpersonal@gmail.com',
     href: 'mailto:arunprashathpersonal@gmail.com',
+    copyable: true,
   },
   {
     label: 'LinkedIn',
@@ -23,6 +25,16 @@ const contactLinks = [
 
 function Contact() {
   const [state, handleSubmit] = useForm(FORMSPREE_FORM_ID)
+  const [copiedEmail, setCopiedEmail] = useState(false)
+  const [showPhone, setShowPhone] = useState(false)
+
+  const handleCopyEmail = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    navigator.clipboard.writeText('arunprashathpersonal@gmail.com')
+    setCopiedEmail(true)
+    setTimeout(() => setCopiedEmail(false), 2000)
+  }
 
   return (
     <section
@@ -31,9 +43,9 @@ function Contact() {
     >
       {/* Background atmosphere */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/5 blur-[140px]" />
+      <div className="pointer-events-none absolute left-10 bottom-10 h-72 w-72 rounded-full bg-cyan-500/5 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl">
-
         {/* Section heading */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -42,11 +54,10 @@ function Contact() {
           transition={{ duration: 0.6 }}
           className="text-xs uppercase tracking-[0.3em] text-cyan-300"
         >
-          06 / Contact
+          07 / Contact
         </motion.p>
 
         <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:items-start">
-
           {/* Left side */}
           <div>
             <motion.h2
@@ -68,28 +79,44 @@ function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="mt-8 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg"
+              className="mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg"
             >
               Have an idea, opportunity, internship, project or simply
-              want to connect? Send me a message directly through the form.
+              want to connect? Send me a message directly through the form or reach out through my channels.
             </motion.p>
 
+            {/* Availability Status Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="mt-8 flex flex-wrap items-center gap-4 rounded-2xl border border-cyan-400/20 bg-cyan-950/20 p-4 backdrop-blur-md"
+            >
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                </span>
+                <span className="text-xs font-semibold text-emerald-300">
+                  Available for Opportunities
+                </span>
+              </div>
+              <span className="text-xs text-slate-500">·</span>
+              <span className="text-xs text-slate-400">
+                AI / ML Engineer & Software Developer
+              </span>
+              <span className="text-xs text-slate-500">·</span>
+              <span className="text-xs text-cyan-300 font-mono">
+                📍 India (IST)
+              </span>
+            </motion.div>
+
             {/* Contact links */}
-            <div className="mt-10 space-y-3">
+            <div className="mt-8 space-y-3">
               {contactLinks.map((link, index) => (
-                <motion.a
+                <motion.div
                   key={link.label}
-                  href={link.href}
-                  target={
-                    link.label === 'Email'
-                      ? undefined
-                      : '_blank'
-                  }
-                  rel={
-                    link.label === 'Email'
-                      ? undefined
-                      : 'noreferrer'
-                  }
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
@@ -100,21 +127,124 @@ function Contact() {
                   whileHover={{ x: 4 }}
                   className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.02] px-5 py-4 transition-all duration-300 hover:border-cyan-300/20 hover:bg-white/[0.04]"
                 >
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-slate-600">
+                  <a
+                    href={link.href}
+                    target={link.label === 'Email' ? undefined : '_blank'}
+                    rel={link.label === 'Email' ? undefined : 'noreferrer'}
+                    className="min-w-0 flex-1"
+                  >
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-medium">
                       {link.label}
                     </p>
 
-                    <p className="mt-1 text-sm text-slate-300 transition-colors duration-300 group-hover:text-white">
+                    <p className="mt-1 truncate text-sm text-slate-300 transition-colors duration-300 group-hover:text-white">
                       {link.value}
                     </p>
-                  </div>
+                  </a>
 
-                  <span className="text-slate-600 transition-colors duration-300 group-hover:text-cyan-300">
-                    ↗
-                  </span>
-                </motion.a>
+                  <div className="flex items-center gap-2">
+                    {link.copyable && (
+                      <button
+                        type="button"
+                        onClick={handleCopyEmail}
+                        className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-slate-400 transition hover:border-cyan-400/30 hover:text-cyan-300"
+                        title="Copy email address"
+                      >
+                        {copiedEmail ? 'Copied! ✓' : 'Copy'}
+                      </button>
+                    )}
+
+                    <a
+                      href={link.href}
+                      target={link.label === 'Email' ? undefined : '_blank'}
+                      rel={link.label === 'Email' ? undefined : 'noreferrer'}
+                      className="text-slate-600 transition-colors duration-300 group-hover:text-cyan-300"
+                      aria-label={`Open ${link.label}`}
+                    >
+                      ↗
+                    </a>
+                  </div>
+                </motion.div>
               ))}
+
+              {/* Protected Phone / Direct Call Card (Anti-Spam Protected) */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.02] px-5 py-4 transition-all duration-300 hover:border-cyan-300/20 hover:bg-white/[0.04]"
+              >
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-medium">
+                    Phone / WhatsApp
+                  </p>
+                  <p className="mt-1 text-sm text-slate-300">
+                    {showPhone ? (
+                      <a
+                        href="tel:+916382907319"
+                        className="text-cyan-300 hover:underline font-mono"
+                      >
+                        +91-6382907319
+                      </a>
+                    ) : (
+                      <span className="text-slate-400">
+                        +91-638••••••• (Protected against spam)
+                      </span>
+                    )}
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setShowPhone(!showPhone)}
+                  className="rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[11px] font-medium text-cyan-300 transition hover:bg-cyan-400/20"
+                >
+                  {showPhone ? 'Hide' : 'Reveal'}
+                </button>
+              </motion.div>
+
+              {/* Download Resume Quick Card */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex items-center justify-between rounded-xl border border-cyan-400/20 bg-gradient-to-r from-cyan-950/30 to-purple-950/20 p-4 shadow-lg"
+              >
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-cyan-400 font-semibold">
+                    Curriculum Vitae
+                  </p>
+                  <p className="mt-0.5 text-sm font-medium text-white">
+                    Arun Prashath's Full Resume
+                  </p>
+                  <p className="text-[11px] text-slate-400">
+                    Verified phone number & contact info included in PDF
+                  </p>
+                </div>
+
+                <a
+                  href="/resume.pdf"
+                  download="Arun_Prashath_Resume.pdf"
+                  className="flex items-center gap-1.5 rounded-xl border border-cyan-400/30 bg-cyan-400/15 px-4 py-2.5 text-xs font-semibold text-cyan-200 transition hover:bg-cyan-400/25 hover:scale-105 active:scale-95"
+                >
+                  <svg
+                    className="h-3.5 w-3.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    />
+                  </svg>
+                  <span>Download PDF</span>
+                </a>
+              </motion.div>
             </div>
           </div>
 
@@ -163,7 +293,6 @@ function Contact() {
                   onSubmit={handleSubmit}
                   className="space-y-5"
                 >
-
                   {/* Name */}
                   <div>
                     <label

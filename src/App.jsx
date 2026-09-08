@@ -1,11 +1,11 @@
 import Navbar from './components/Navbar'
-import UniverseCursor from './components/UniverseCursor'
 import Hero from './components/Hero'
 import About from './components/About'
-import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Training from './components/Training'
+import Skills from './components/Skills'
 import Certifications from './components/Certifications'
+import Education from './components/Education'
 import Contact from './components/Contact'
 
 function App() {
@@ -14,8 +14,6 @@ function App() {
       id="top"
       className="min-h-screen overflow-x-hidden bg-[#030712] text-white"
     >
-      <UniverseCursor />
-
       <Navbar />
 
       <main>
@@ -23,13 +21,15 @@ function App() {
 
         <About />
 
-        <Skills />
-
         <Projects />
 
         <Training />
 
+        <Skills />
+
         <Certifications />
+
+        <Education />
 
         <Contact />
       </main>
@@ -40,8 +40,8 @@ function App() {
             Arun Prashath · B.Tech CSE · AI & ML
           </span>
 
-          <span className="text-xs text-slate-700">
-            Built with React
+          <span className="text-xs text-slate-600">
+            © {new Date().getFullYear()} Arun Prashath. All rights reserved.
           </span>
         </div>
       </footer>

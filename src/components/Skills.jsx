@@ -3,34 +3,37 @@ import { motion } from 'motion/react'
 const skillGroups = [
   {
     title: 'Languages',
-    items: ['C++', 'Python', 'Java'],
+    items: ['Python', 'C++', 'C', 'SQL', 'Java'],
   },
   {
-    title: 'AI / ML',
+    title: 'Tools & AI/ML Stack',
     items: [
-      'Machine Learning',
       'Scikit-learn',
       'Pandas',
       'NumPy',
-      'NLP',
-    ],
-  },
-  {
-    title: 'Development',
-    items: [
+      'Prophet',
       'Streamlit',
       'SQLite',
-      'SQL',
       'Git',
       'GitHub',
     ],
   },
   {
-    title: 'Core',
+    title: 'Core Concepts',
     items: [
+      'Machine Learning',
+      'NLP',
       'Data Structures',
       'Algorithms',
       'OOP',
+    ],
+  },
+  {
+    title: 'Professional',
+    items: [
+      'Team Player',
+      'Time Management',
+      'Attention to Detail',
       'Problem Solving',
     ],
   },
@@ -57,7 +60,7 @@ function Skills() {
           transition={{ duration: 0.7 }}
         >
           <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
-            02 / Skills
+            04 / Skills
           </p>
 
           <h2 className="mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
@@ -108,8 +111,7 @@ function Skills() {
                   {group.items.map((skill) => (
                     <motion.span
                       key={skill}
-                      whileHover={{ scale: 1.04 }}
-                      data-cursor="SKILL"
+                      whileHover={{ scale: 1.05 }}
                       className="rounded-full border border-white/10 bg-black/20 px-3 py-2 text-xs text-slate-400 transition-colors duration-300 hover:border-cyan-400/30 hover:text-cyan-300"
                     >
                       {skill}
