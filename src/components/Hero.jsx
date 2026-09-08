@@ -89,17 +89,22 @@ function Hero() {
             </span>
           </div>
 
-          <h1 className="mt-6 text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Building intelligence{' '}
+          {/* Name Heading */}
+          <h1 className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-7xl lg:text-8xl">
+            Arun{' '}
             <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-              one system
-            </span>{' '}
-            at a time.
+              Prashath
+            </span>
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-            Hi, I’m <span className="font-medium text-white">Arun Prashath</span> — a Computer Science student 
-            specializing in time-series forecasting, LLM multi-turn recommender architectures, and algorithmic systems.
+          {/* Subheading / Tagline */}
+          <p className="mt-4 text-xl font-medium tracking-tight text-cyan-200 sm:text-2xl lg:text-3xl">
+            Building intelligence one system at a time.
+          </p>
+
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+            Computer Science student specializing in predictive time-series forecasting, 
+            conversational LLM architectures, and high-performance algorithms.
           </p>
 
           {/* Action CTAs */}
