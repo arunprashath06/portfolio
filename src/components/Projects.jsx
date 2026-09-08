@@ -10,7 +10,7 @@ const projects = [
     title: 'Student Academic Performance Prediction',
     category: 'AI & Machine Learning',
     date: 'May 2026',
-    badge: 'LPU Capstone (CSE274)',
+    badge: 'Supervised ML',
     description:
       'Engineered a supervised machine learning pipeline predicting final student grades (G3) from 649 records across 30+ socio-academic features. Implemented IQR outlier removal, feature encoding, and benchmarked Linear Regression against Random Forest. Achieved R² 0.8632 (86.3% variance explained) and RMSE 1.1547.',
     tags: ['Python', 'Scikit-learn', 'Linear Regression', 'Random Forest', 'Pandas', 'Seaborn'],
@@ -33,7 +33,7 @@ const projects = [
     title: 'AI Home Appliance Recommender Chatbot',
     category: 'AI & Machine Learning',
     date: 'May 2026',
-    badge: 'INT428 Project',
+    badge: 'LLM & NLP',
     description:
       'Interactive conversational shopping assistant developed with Streamlit and Groq LLaMA-3.1-8B-Instant with an Ollama local fallback. Uses regex natural-language slot extraction for budget, family size, and machine type, coupled with a 4-stage ranking algorithm weighting user ratings (60%) and capacity matching (40%).',
     tags: ['Python', 'LLaMA 3.1', 'Groq Cloud', 'Ollama Fallback', 'Streamlit', 'NLP Regex', 'Pandas'],
@@ -77,7 +77,7 @@ const projects = [
     title: 'Efficient Page Replacement Algorithm Simulator',
     category: 'Systems & Algorithms',
     date: 'Dec 2025',
-    badge: 'CSE316 OS Task',
+    badge: 'Systems & OS',
     description:
       'Modular C++ operating systems simulator benchmarking FIFO, LRU, and Belady’s Optimal page replacement algorithms. Utilized C++ STL vectors, queues, unordered sets, and hash maps to trace frame-by-frame memory page hits and faults across configurable page reference strings.',
     tags: ['C++', 'STL', 'Operating Systems', 'Memory Management', 'Algorithms'],
