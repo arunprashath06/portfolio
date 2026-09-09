@@ -47,6 +47,8 @@ const projects = [
     github: 'https://github.com/hrishi1314/AI-Chatbot-',
     realImage: './projects/INT_428_final_project_report_p26_0.png',
     realImageTitle: 'Streamlit Chatbot UI & Real Recommendation Outputs',
+    secondaryImage: './projects/INT_428_final_project_report_p27_0.png',
+    secondaryImageTitle: 'Recommendation Pipeline & Evaluation Matrix',
   },
   {
     id: 'supply-chain',
@@ -126,7 +128,7 @@ function Projects() {
       : projects.filter((p) => p.category === selectedCategory)
 
   return (
-    <section id="projects" className="relative px-6 py-28 sm:py-36">
+    <section id="projects" className="relative px-3.5 sm:px-6 py-20 sm:py-36">
       {/* Background Ambient Glows - GPU Accelerated */}
       <div className="pointer-events-none absolute left-1/4 top-1/4 h-[400px] w-[400px] rounded-full [background:radial-gradient(circle,rgba(6,182,212,0.08)_0%,transparent_70%)]" />
       <div className="pointer-events-none absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full [background:radial-gradient(circle,rgba(147,51,234,0.08)_0%,transparent_70%)]" />
@@ -149,7 +151,7 @@ function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="mt-4 text-4xl font-semibold text-white sm:text-5xl lg:text-6xl"
+              className="mt-4 text-3xl font-semibold text-white sm:text-5xl lg:text-6xl"
             >
               Engineering{' '}
               <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -162,7 +164,7 @@ function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="mt-4 max-w-2xl text-base text-slate-400 sm:text-lg"
+              className="mt-3 max-w-2xl text-sm sm:text-base lg:text-lg text-slate-400"
             >
               Real machine learning models, conversational LLM architectures, and algorithm
               simulators with authentic outputs, evaluation metrics, and source repositories.
@@ -170,7 +172,7 @@ function Projects() {
           </div>
 
           {/* Category Filter Tabs - Smooth swipeable on mobile */}
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar rounded-2xl border border-white/10 bg-slate-900/60 p-1.5 backdrop-blur-md max-w-full">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar rounded-2xl border border-white/10 bg-slate-900/60 p-1.5 backdrop-blur-md max-w-full touch-pan-x">
             {categories.map((cat) => {
               const isSelected = selectedCategory === cat
               return (
@@ -178,15 +180,13 @@ function Projects() {
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`relative rounded-xl px-4 py-2 text-xs font-medium transition-colors duration-200 ${
-                    isSelected
-                      ? 'text-white font-semibold'
-                      : 'text-slate-400 hover:text-slate-200'
+                  className={`relative whitespace-nowrap rounded-xl px-3.5 sm:px-5 py-2 text-xs sm:text-sm font-medium transition-all ${
+                    isSelected ? 'text-white font-semibold' : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
                   {isSelected && (
-                    <motion.div
-                      layoutId="activeProjectFilter"
+                    <motion.span
+                      layoutId="activeCategoryPill"
                       className="absolute inset-0 rounded-xl border border-cyan-400/30 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 shadow-[0_0_15px_rgba(34,211,238,0.15)]"
                       transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                     />
@@ -199,7 +199,7 @@ function Projects() {
         </div>
 
         {/* Project Cards Grid — Clean, Spacious & Breathable */}
-        <motion.div layout className="mt-14 space-y-10">
+        <motion.div layout className="mt-10 sm:mt-14 space-y-8 sm:space-y-10">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => {
               const currentView = activeViewTab[project.id] || 'output'
@@ -217,29 +217,59 @@ function Projects() {
                     delay: index * 0.07,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="group relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-gradient-to-br from-slate-900/60 via-slate-950/80 to-[#050b18] p-8 sm:p-10 shadow-2xl transition-all duration-300 hover:border-cyan-400/30"
+                  onTouchStart={(e) => {
+                    setTouchState({ startX: e.touches[0].clientX, startY: e.touches[0].clientY })
+                  }}
+                  onTouchEnd={(e) => {
+                    const diffX = touchState.startX - e.changedTouches[0].clientX
+                    const diffY = touchState.startY - e.changedTouches[0].clientY
+                    if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY) && project.secondaryImage) {
+                      if (diffX > 0) {
+                        // Swiped Left -> go to View 2 (Secondary)
+                        setActiveViewTab((prev) => ({ ...prev, [project.id]: 'secondary' }))
+                      } else {
+                        // Swiped Right -> go to View 1 (Primary Output)
+                        setActiveViewTab((prev) => ({ ...prev, [project.id]: 'output' }))
+                      }
+                    }
+                  }}
+                  className="group relative overflow-hidden rounded-2xl sm:rounded-[2.2rem] border border-white/10 bg-gradient-to-br from-slate-900/60 via-slate-950/80 to-[#050b18] p-4 sm:p-7 lg:p-10 shadow-2xl transition-all duration-300 hover:border-cyan-400/30 touch-pan-y"
                 >
                   {/* Subtle hover backlight */}
                   <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                   {/* Card Top: Number, Date & Badges */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-6">
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-sm font-bold tracking-widest text-cyan-400">
+                  <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-slate-800/80 pb-4 sm:pb-6">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <span className="font-mono text-xs sm:text-sm font-bold tracking-widest text-cyan-400">
                         {project.number}
                       </span>
                       <span className="text-slate-600">/</span>
-                      <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
+                      <span className="text-[11px] sm:text-xs uppercase tracking-wider text-slate-400 font-medium">
                         {project.category}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[11px] text-slate-300">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      {project.secondaryImage && (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setActiveViewTab((prev) => ({
+                              ...prev,
+                              [project.id]: currentView === 'output' ? 'secondary' : 'output',
+                            }))
+                          }
+                          className="rounded-full border border-cyan-400/30 bg-cyan-950/50 px-2.5 py-0.5 font-mono text-[10px] text-cyan-300 hover:bg-cyan-900/50 transition"
+                        >
+                          {currentView === 'output' ? 'View 1/2 (Swipe ⇄)' : 'View 2/2 (Swipe ⇄)'}
+                        </button>
+                      )}
+                      <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-[10px] sm:text-[11px] text-slate-300">
                         {project.date}
                       </span>
                       {project.badge && (
-                        <span className="rounded-full border border-cyan-400/25 bg-cyan-950/40 px-3 py-1 font-mono text-[11px] font-medium text-cyan-300">
+                        <span className="rounded-full border border-cyan-400/25 bg-cyan-950/40 px-2.5 py-0.5 font-mono text-[10px] sm:text-[11px] font-medium text-cyan-300">
                           {project.badge}
                         </span>
                       )}
@@ -247,20 +277,20 @@ function Projects() {
                   </div>
 
                   {/* Main Two-Column Layout (Info on Left, Real Output on Right) */}
-                  <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-start">
+                  <div className="mt-6 sm:mt-8 grid gap-6 sm:gap-8 lg:grid-cols-12 lg:items-start">
                     
                     {/* LEFT COLUMN: Description, Highlights, Metrics (7 cols) */}
                     <div className="lg:col-span-7">
-                      <h3 className="text-2xl font-semibold text-white sm:text-3xl">
+                      <h3 className="text-xl font-semibold text-white sm:text-2xl lg:text-3xl break-words">
                         {project.title}
                       </h3>
 
                       {/* Highlights */}
-                      <div className="mt-4 flex flex-wrap gap-2">
+                      <div className="mt-3.5 flex flex-wrap gap-1.5 sm:gap-2">
                         {project.highlights.map((h) => (
                           <span
                             key={h}
-                            className="rounded-lg border border-cyan-400/20 bg-cyan-950/30 px-2.5 py-1 font-mono text-[11px] text-cyan-300"
+                            className="rounded-lg border border-cyan-400/20 bg-cyan-950/30 px-2 sm:px-2.5 py-1 font-mono text-[10px] sm:text-[11px] text-cyan-300 break-words"
                           >
                             ✦ {h}
                           </span>
@@ -268,26 +298,26 @@ function Projects() {
                       </div>
 
                       {/* Description */}
-                      <p className="mt-5 text-sm leading-relaxed text-slate-300 sm:text-base">
+                      <p className="mt-4 text-xs sm:text-sm leading-relaxed text-slate-300 sm:text-base">
                         {project.description}
                       </p>
 
                       {/* Metrics Summary Strip */}
-                      <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2.5 rounded-xl border border-slate-800/80 bg-slate-950/60 p-3">
+                      <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-2 rounded-xl border border-slate-800/80 bg-slate-950/60 p-2.5 sm:p-3">
                         {project.metrics.map((m) => (
-                          <div key={m.label} className="text-center">
-                            <p className="text-[10px] uppercase font-mono text-slate-500">{m.label}</p>
-                            <p className="mt-0.5 font-mono text-sm font-bold text-white">{m.val}</p>
+                          <div key={m.label} className="text-center p-0.5 sm:p-1 overflow-hidden">
+                            <p className="text-[9px] sm:text-[10px] uppercase font-mono text-slate-500 truncate">{m.label}</p>
+                            <p className="mt-0.5 font-mono text-xs sm:text-sm font-bold text-white truncate">{m.val}</p>
                           </div>
                         ))}
                       </div>
 
                       {/* Tech Tags */}
-                      <div className="mt-6 flex flex-wrap gap-2">
+                      <div className="mt-5 flex flex-wrap gap-1.5 sm:gap-2">
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[11px] text-slate-400"
+                            className="rounded-full border border-white/10 bg-white/5 px-2.5 sm:px-3 py-0.5 sm:py-1 font-mono text-[10px] sm:text-[11px] text-slate-400"
                           >
                             {tag}
                           </span>
@@ -295,7 +325,7 @@ function Projects() {
                       </div>
 
                       {/* Action Links */}
-                      <div className="mt-7 flex flex-wrap items-center gap-3">
+                      <div className="mt-6 sm:mt-7 flex flex-wrap items-center gap-2.5 sm:gap-3">
                         {project.github && (
                           <a
                             href={project.github}
@@ -372,8 +402,13 @@ function Projects() {
                             const diffX = touchState.startX - e.changedTouches[0].clientX
                             const diffY = touchState.startY - e.changedTouches[0].clientY
                             if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY) && project.secondaryImage) {
-                              const nextView = diffX > 0 ? 'secondary' : 'output'
-                              setActiveViewTab((prev) => ({ ...prev, [project.id]: nextView }))
+                              if (diffX > 0) {
+                                // Swiped Left -> go to View 2 (Secondary)
+                                setActiveViewTab((prev) => ({ ...prev, [project.id]: 'secondary' }))
+                              } else {
+                                // Swiped Right -> go to View 1 (Primary Output)
+                                setActiveViewTab((prev) => ({ ...prev, [project.id]: 'output' }))
+                              }
                             }
                           }}
                         >
