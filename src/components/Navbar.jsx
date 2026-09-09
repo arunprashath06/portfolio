@@ -48,7 +48,7 @@ function Navbar() {
       className="fixed left-0 right-0 top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4"
     >
       <nav
-        className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl border px-4 py-2.5 transition-all duration-300 sm:px-5 sm:py-3 ${
+        className={`mx-auto flex max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1480px] items-center justify-between rounded-2xl border px-4 py-2.5 transition-all duration-300 sm:px-5 sm:py-3 ${
           isScrolled
             ? 'border-white/15 bg-[#030712]/90 shadow-2xl shadow-black/40 backdrop-blur-xl'
             : 'border-white/10 bg-[#030712]/70 backdrop-blur-lg'
@@ -60,18 +60,18 @@ function Navbar() {
           className="group flex items-center gap-3"
           onClick={() => setMobileMenuOpen(false)}
         >
-          <div className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl border border-cyan-400/20 bg-gradient-to-br from-cyan-400/10 to-purple-500/10 transition-all duration-300 group-hover:border-cyan-300/40 group-hover:scale-105">
-            <span className="text-sm font-semibold tracking-wide text-cyan-200">
+          <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-cyan-400/25 bg-gradient-to-br from-cyan-400/15 to-purple-500/15 transition-all duration-300 group-hover:border-cyan-300/50 group-hover:scale-105 shadow-md shadow-cyan-950/30">
+            <span className="text-sm font-bold tracking-wide text-cyan-200">
               AP
             </span>
           </div>
 
           <div className="hidden sm:block">
-            <span className="text-sm font-medium text-slate-200">
+            <span className="text-sm sm:text-base font-semibold text-white group-hover:text-cyan-200 transition-colors">
               Arun Prashath
             </span>
-            <span className="block text-[10px] text-cyan-400 font-mono">
-              AI & ML
+            <span className="block text-[11px] text-cyan-400 font-mono font-medium tracking-wide">
+              AI / ML Engineer
             </span>
           </div>
         </a>
