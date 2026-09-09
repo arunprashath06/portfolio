@@ -68,7 +68,7 @@ function Training() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-[2.5rem] border border-cyan-400/20 bg-gradient-to-br from-cyan-950/20 via-slate-900/40 to-purple-950/20 shadow-[0_0_60px_rgba(34,211,238,0.08)]"
+            className="relative overflow-hidden rounded-[2.5rem] border border-cyan-400/20 bg-gradient-to-br from-cyan-950/20 via-slate-900/40 to-purple-950/20 shadow-[0_0_60px_rgba(34,211,238,0.08)] gpu-accelerated"
           >
             {/* Ambient glow inside card */}
             <div className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
@@ -269,7 +269,9 @@ function Training() {
                       <img
                         src="./projects/supply_chain_plot_4_1.png"
                         alt="Facebook Prophet 12-Week Horizon Forecast"
-                        className="max-h-56 w-full object-contain rounded-lg border border-slate-800"
+                        loading="lazy"
+                        decoding="async"
+                        className="max-h-56 w-full object-contain rounded-lg border border-slate-800 gpu-layer"
                       />
                       <p className="mt-2 font-mono text-[11px] text-slate-400">
                         Actual Facebook Prophet fitted curve with 95% uncertainty interval from demand_forecasting_real_data.ipynb

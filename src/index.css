@@ -36,10 +36,27 @@ html {
 }
 
 /* GPU hardware acceleration for smooth 60-120fps scrolling */
-.gpu-layer {
+.gpu-layer,
+.gpu-accelerated {
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Offload off-screen DOM layout and paint to achieve butter-smooth 60-120fps scrolling */
+.section-deferred {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 850px;
+}
+
+@media (max-width: 640px) {
+  /* Prevent excessive GPU sampling on mobile while retaining sleek frosted look */
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
 
 /* Utility to hide scrollbars on horizontal swipeable tracks while keeping touch scroll */

@@ -96,7 +96,7 @@ function Hero() {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative z-10 lg:col-span-7"
+          className="relative z-10 lg:col-span-7 gpu-accelerated"
         >
           {/* Status Pill */}
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-950/40 px-3.5 py-1 shadow-[0_0_20px_rgba(34,211,238,0.15)] backdrop-blur-md">
@@ -209,7 +209,7 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="relative z-10 lg:col-span-5"
+          className="relative z-10 lg:col-span-5 gpu-accelerated"
         >
           {/* Ambient Glow behind Console */}
           <div className="pointer-events-none absolute -inset-2 rounded-3xl bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 blur-xl opacity-60" />

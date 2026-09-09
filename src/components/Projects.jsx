@@ -199,7 +199,7 @@ function Projects() {
         </div>
 
         {/* Project Cards Grid — Clean, Spacious & Breathable */}
-        <motion.div layout className="mt-10 sm:mt-14 space-y-8 sm:space-y-10">
+        <motion.div layout="position" className="mt-10 sm:mt-14 space-y-8 sm:space-y-10">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => {
               const currentView = activeViewTab[project.id] || 'output'
@@ -207,7 +207,7 @@ function Projects() {
               return (
                 <motion.article
                   key={project.id}
-                  layout
+                  layout="position"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.96 }}
@@ -233,7 +233,7 @@ function Projects() {
                       }
                     }
                   }}
-                  className="group relative overflow-hidden rounded-2xl sm:rounded-[2.2rem] border border-white/10 bg-gradient-to-br from-slate-900/60 via-slate-950/80 to-[#050b18] p-4 sm:p-7 lg:p-10 shadow-2xl transition-all duration-300 hover:border-cyan-400/30 touch-pan-y"
+                  className="group relative overflow-hidden rounded-2xl sm:rounded-[2.2rem] border border-white/10 bg-gradient-to-br from-slate-900/60 via-slate-950/80 to-[#050b18] p-4 sm:p-7 lg:p-10 shadow-2xl transition-all duration-300 hover:border-cyan-400/30 touch-pan-y gpu-accelerated"
                 >
                   {/* Subtle hover backlight */}
                   <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -415,7 +415,9 @@ function Projects() {
                           <img
                             src={currentView === 'output' ? project.realImage : project.secondaryImage}
                             alt={project.title}
-                            className="max-h-64 w-full object-contain rounded-lg transition-transform duration-300 group-hover/img:scale-[1.02]"
+                            loading="lazy"
+                            decoding="async"
+                            className="max-h-64 w-full object-contain rounded-lg transition-transform duration-300 group-hover/img:scale-[1.02] gpu-layer"
                           />
                           <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2">
                             <span className="rounded-lg bg-black/80 px-3 py-1.5 font-mono text-xs text-white shadow-lg border border-white/20">
@@ -567,7 +569,8 @@ function Projects() {
                   <img
                     src={currentImg}
                     alt={currentTitle}
-                    className="max-h-[72vh] max-w-full rounded-lg object-contain"
+                    decoding="async"
+                    className="max-h-[72vh] max-w-full rounded-lg object-contain gpu-layer"
                   />
                 </div>
 

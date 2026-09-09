@@ -213,12 +213,12 @@ function Certifications() {
           </div>
 
           {/* Certificate Cards Grid - Visible Credential Badges & Direct Download */}
-          <motion.div layout className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div layout="position" className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <AnimatePresence mode="popLayout">
               {filteredCertificates.map((certificate, index) => (
                 <motion.div
                   key={`${certificate.title}-${certificate.issuer}`}
-                  layout
+                  layout="position"
                   initial={{ opacity: 0, y: 25 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
@@ -229,7 +229,7 @@ function Certifications() {
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   whileHover={{ y: -6 }}
-                  className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.035] to-white/[0.01] p-6 transition-all duration-300 hover:border-cyan-300/30 hover:bg-white/[0.05] shadow-lg"
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.035] to-white/[0.01] p-6 transition-all duration-300 hover:border-cyan-300/30 hover:bg-white/[0.05] shadow-lg gpu-accelerated"
                 >
                   {/* Hover glow */}
                   <div className="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-cyan-400/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -412,7 +412,8 @@ function Certifications() {
                     <img
                       src={selectedCertificate.file}
                       alt={`${selectedCertificate.title} certificate`}
-                      className="max-h-[80vh] max-w-full rounded-lg object-contain shadow-2xl"
+                      decoding="async"
+                      className="max-h-[80vh] max-w-full rounded-lg object-contain shadow-2xl gpu-layer"
                     />
                   </div>
                 ) : (

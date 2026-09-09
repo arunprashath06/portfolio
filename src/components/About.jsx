@@ -157,9 +157,11 @@ function About() {
                   <img
                     src="/profile.jpg"
                     alt="Arun Prashath"
+                    loading="lazy"
+                    decoding="async"
                     onLoad={() => setImageLoaded(true)}
                     onError={() => setImageError(true)}
-                    className={`h-full w-full object-cover transition-opacity duration-500 ${
+                    className={`h-full w-full object-cover transition-opacity duration-500 gpu-layer ${
                       imageLoaded ? 'opacity-100' : 'opacity-0'
                     }`}
                   />

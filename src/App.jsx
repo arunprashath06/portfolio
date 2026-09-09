@@ -1,12 +1,20 @@
+import { lazy, Suspense } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import About from './components/About'
-import Projects from './components/Projects'
-import Training from './components/Training'
-import Skills from './components/Skills'
-import Certifications from './components/Certifications'
-import Education from './components/Education'
-import Contact from './components/Contact'
+
+// Below-the-fold components lazy-loaded for maximum performance & 60-120fps smoothness
+const About = lazy(() => import('./components/About'))
+const Projects = lazy(() => import('./components/Projects'))
+const Training = lazy(() => import('./components/Training'))
+const Skills = lazy(() => import('./components/Skills'))
+const Certifications = lazy(() => import('./components/Certifications'))
+const Education = lazy(() => import('./components/Education'))
+const Contact = lazy(() => import('./components/Contact'))
+
+// Lightweight invisible placeholder to prevent layout shifts during background fetch
+const SectionFallback = () => (
+  <div className="min-h-[400px] w-full flex items-center justify-center opacity-0" />
+)
 
 function App() {
   return (
@@ -17,21 +25,39 @@ function App() {
       <Navbar />
 
       <main>
+        {/* Instant First Contentful Paint: Hero renders immediately */}
         <Hero />
 
-        <About />
+        {/* Deferred sections streamed in background with zero main-thread blocking */}
+        <Suspense fallback={<SectionFallback />}>
+          <div className="section-deferred">
+            <About />
+          </div>
 
-        <Projects />
+          <div className="section-deferred">
+            <Projects />
+          </div>
 
-        <Training />
+          <div className="section-deferred">
+            <Training />
+          </div>
 
-        <Skills />
+          <div className="section-deferred">
+            <Skills />
+          </div>
 
-        <Certifications />
+          <div className="section-deferred">
+            <Certifications />
+          </div>
 
-        <Education />
+          <div className="section-deferred">
+            <Education />
+          </div>
 
-        <Contact />
+          <div className="section-deferred">
+            <Contact />
+          </div>
+        </Suspense>
       </main>
 
       <footer className="border-t border-white/5 px-6 py-8">
