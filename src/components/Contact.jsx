@@ -191,7 +191,7 @@ function Contact() {
                 </div>
 
                 <a
-                  href="/resume.pdf"
+                  href="./resume.pdf"
                   download="Arun_Prashath_Resume.pdf"
                   className="flex items-center gap-1.5 rounded-xl border border-cyan-400/30 bg-cyan-400/15 px-4 py-2.5 text-xs font-semibold text-cyan-200 transition hover:bg-cyan-400/25 hover:scale-105 active:scale-95"
                 >

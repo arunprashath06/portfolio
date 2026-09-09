@@ -139,7 +139,7 @@ function Hero() {
             </a>
 
             <a
-              href="/resume.pdf"
+              href="./resume.pdf"
               download="Arun_Prashath_Resume.pdf"
               className="group flex items-center gap-2 rounded-xl border border-cyan-400/40 bg-gradient-to-r from-cyan-400/15 via-blue-500/15 to-purple-500/15 px-6 py-3.5 text-sm font-medium text-cyan-200 shadow-[0_0_20px_rgba(34,211,238,0.15)] backdrop-blur-xl transition-all hover:border-cyan-300 hover:from-cyan-400/25 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)] hover:scale-105 active:scale-95"
             >

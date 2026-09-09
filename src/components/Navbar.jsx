@@ -110,7 +110,7 @@ function Navbar() {
         <div className="flex items-center gap-3">
           {/* Downloadable Resume Button */}
           <a
-            href="/resume.pdf"
+            href="./resume.pdf"
             download="Arun_Prashath_Resume.pdf"
             className="flex items-center gap-2 rounded-xl border border-cyan-400/35 bg-cyan-400/15 px-4 py-2 text-xs sm:text-sm font-semibold text-cyan-200 shadow-[0_0_15px_rgba(34,211,238,0.15)] transition-all duration-200 hover:border-cyan-300 hover:bg-cyan-400/25 hover:scale-105 active:scale-95"
             title="Download Resume PDF"
@@ -178,7 +178,7 @@ function Navbar() {
               ))}
               <div className="mt-2 flex gap-2 border-t border-white/10 pt-3">
                 <a
-                  href="/resume.pdf"
+                  href="./resume.pdf"
                   download="Arun_Prashath_Resume.pdf"
                   className="flex-1 rounded-xl border border-cyan-400/30 bg-cyan-400/10 py-2.5 text-center text-xs font-medium text-cyan-200"
                 >

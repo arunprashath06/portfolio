@@ -6,7 +6,7 @@ const summerCertificate = {
   subtitle: 'Summer Training Certification',
   issuer: 'Lovely Professional University',
   date: 'July 2026',
-  file: '/certificates/summer training.pdf',
+  file: './certificates/summer training.pdf',
   downloadName: 'LPU_Data_AI_Engineer_Summer_Training_Certificate.pdf',
 }
 
@@ -267,7 +267,7 @@ function Training() {
                   ) : (
                     <div className="mt-4 flex flex-col items-center">
                       <img
-                        src="/projects/supply_chain_plot_4_1.png"
+                        src="./projects/supply_chain_plot_4_1.png"
                         alt="Facebook Prophet 12-Week Horizon Forecast"
                         className="max-h-56 w-full object-contain rounded-lg border border-slate-800"
                       />
