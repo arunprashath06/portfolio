@@ -72,7 +72,7 @@ function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 sm:px-6 pb-20 pt-28 sm:pt-32 lg:pt-36"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 sm:px-6 pb-12 pt-20 sm:pt-24 lg:pt-28"
     >
       {/* Subtle Architectural Dot Grid — removes black void without clutter */}
       <div 
@@ -89,7 +89,7 @@ function Hero() {
       <div className="pointer-events-none absolute -left-20 top-1/4 h-[450px] w-[450px] rounded-full [background:radial-gradient(circle,rgba(6,182,212,0.1)_0%,transparent_70%)]" />
       <div className="pointer-events-none absolute -right-20 top-1/3 h-[450px] w-[450px] rounded-full [background:radial-gradient(circle,rgba(147,51,234,0.1)_0%,transparent_70%)]" />
 
-      <div className="mx-auto grid w-full max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1480px] items-center gap-12 lg:grid-cols-12 lg:gap-14 xl:gap-20">
+      <div className="mx-auto grid w-full max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1440px] items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
 
         {/* LEFT COLUMN: 7 cols */}
         <motion.div
@@ -99,40 +99,40 @@ function Hero() {
           className="relative z-10 lg:col-span-7"
         >
           {/* Status Pill */}
-          <div className="inline-flex items-center gap-2.5 rounded-full border border-cyan-400/30 bg-cyan-950/40 px-4 py-1.5 shadow-[0_0_20px_rgba(34,211,238,0.15)] backdrop-blur-md">
-            <span className="relative flex h-2.5 w-2.5">
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-950/40 px-3.5 py-1 shadow-[0_0_20px_rgba(34,211,238,0.15)] backdrop-blur-md">
+            <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
             </span>
-            <span className="font-mono text-xs font-semibold tracking-wider text-cyan-300">
+            <span className="font-mono text-[11px] font-semibold tracking-wider text-cyan-300">
               AI / ML ENGINEER &amp; SYSTEMS ARCHITECT
             </span>
           </div>
 
           {/* Name Heading */}
-          <h1 className="mt-6 text-5xl sm:text-7xl md:text-8xl xl:text-[5.5rem] 2xl:text-[6.25rem] font-extrabold leading-[1.02] tracking-tight text-white">
+          <h1 className="mt-4 text-4xl sm:text-6xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight text-white">
             Arun{' '}
-            <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_45px_rgba(34,211,238,0.25)]">
+            <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(34,211,238,0.25)]">
               Prashath
             </span>
           </h1>
 
           {/* Subheading / Tagline */}
-          <p className="mt-5 text-xl font-semibold tracking-tight text-cyan-200/90 sm:text-2xl lg:text-3xl xl:text-[2rem] leading-snug">
+          <p className="mt-3 text-lg sm:text-xl lg:text-2xl font-semibold tracking-tight text-cyan-200/90">
             Building intelligence one system at a time.
           </p>
 
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg lg:text-xl">
+          <p className="mt-3 max-w-xl text-sm sm:text-base leading-relaxed text-slate-300">
             Computer Science undergraduate specializing in <span className="text-white font-medium">predictive time-series forecasting</span>,{' '}
             <span className="text-white font-medium">conversational LLM architectures</span>, and{' '}
             <span className="text-white font-medium">high-performance systems</span>.
           </p>
 
           {/* Action CTAs */}
-          <div className="mt-8 flex flex-wrap items-center gap-3.5">
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <a
               href="#projects"
-              className="flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 transition-all hover:bg-slate-100 hover:scale-105 active:scale-95"
+              className="flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 transition-all hover:bg-slate-100 hover:scale-105 active:scale-95"
             >
               <span>Explore Projects</span>
               <span className="text-xs">↓</span>
@@ -141,7 +141,7 @@ function Hero() {
             <a
               href="./resume.pdf"
               download="Arun_Prashath_Resume.pdf"
-              className="group flex items-center gap-2 rounded-xl border border-cyan-400/40 bg-gradient-to-r from-cyan-400/15 via-blue-500/15 to-purple-500/15 px-6 py-3.5 text-sm font-medium text-cyan-200 shadow-[0_0_20px_rgba(34,211,238,0.15)] backdrop-blur-xl transition-all hover:border-cyan-300 hover:from-cyan-400/25 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)] hover:scale-105 active:scale-95"
+              className="group flex items-center gap-2 rounded-xl border border-cyan-400/40 bg-gradient-to-r from-cyan-400/15 via-blue-500/15 to-purple-500/15 px-5 py-2.5 text-sm font-medium text-cyan-200 shadow-[0_0_20px_rgba(34,211,238,0.15)] backdrop-blur-xl transition-all hover:border-cyan-300 hover:from-cyan-400/25 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)] hover:scale-105 active:scale-95"
             >
               <svg
                 className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5"
@@ -166,7 +166,7 @@ function Hero() {
               href="https://github.com/arunprashath06"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-medium text-slate-300 backdrop-blur-xl transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
+              className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-300 backdrop-blur-xl transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
             >
               <span>GitHub</span>
               <span className="text-xs">↗</span>
@@ -174,32 +174,32 @@ function Hero() {
           </div>
 
           {/* Metric Telemetry Cards */}
-          <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-4 pt-2">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-md transition-all duration-300 hover:border-cyan-400/40 hover:bg-white/[0.05]">
+          <div className="mt-7 grid grid-cols-3 gap-3 pt-1">
+            <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 sm:p-3.5 backdrop-blur-md transition-all duration-300 hover:border-cyan-400/40 hover:bg-white/[0.05]">
               <div className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                <p className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-slate-400">Accuracy</p>
+                <p className="font-mono text-[10px] uppercase tracking-wider text-slate-400">Accuracy</p>
               </div>
-              <p className="mt-1 font-mono text-2xl font-bold tracking-tight text-white sm:text-3xl">92.4%</p>
-              <p className="mt-0.5 text-[11px] text-slate-400">Demand Model</p>
+              <p className="mt-0.5 font-mono text-xl sm:text-2xl font-bold tracking-tight text-white">92.4%</p>
+              <p className="text-[10px] sm:text-[11px] text-slate-400">Demand Model</p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/40 hover:bg-white/[0.05]">
+            <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 sm:p-3.5 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/40 hover:bg-white/[0.05]">
               <div className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                <p className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-slate-400">Latency</p>
+                <p className="font-mono text-[10px] uppercase tracking-wider text-slate-400">Latency</p>
               </div>
-              <p className="mt-1 font-mono text-2xl font-bold tracking-tight text-white sm:text-3xl">&lt;150ms</p>
-              <p className="mt-0.5 text-[11px] text-slate-400">Groq LLM</p>
+              <p className="mt-0.5 font-mono text-xl sm:text-2xl font-bold tracking-tight text-white">&lt;150ms</p>
+              <p className="text-[10px] sm:text-[11px] text-slate-400">Groq LLM</p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-md transition-all duration-300 hover:border-purple-400/40 hover:bg-white/[0.05]">
+            <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 sm:p-3.5 backdrop-blur-md transition-all duration-300 hover:border-purple-400/40 hover:bg-white/[0.05]">
               <div className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-purple-400" />
-                <p className="font-mono text-[10px] sm:text-xs uppercase tracking-wider text-slate-400">Systems</p>
+                <p className="font-mono text-[10px] uppercase tracking-wider text-slate-400">Systems</p>
               </div>
-              <p className="mt-1 font-mono text-2xl font-bold tracking-tight text-white sm:text-3xl">4 Core</p>
-              <p className="mt-0.5 text-[11px] text-slate-400">Deployed Systems</p>
+              <p className="mt-0.5 font-mono text-xl sm:text-2xl font-bold tracking-tight text-white">4 Core</p>
+              <p className="text-[10px] sm:text-[11px] text-slate-400">Deployed Systems</p>
             </div>
           </div>
         </motion.div>
