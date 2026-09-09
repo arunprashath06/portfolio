@@ -48,52 +48,55 @@ function Navbar() {
       className="fixed left-0 right-0 top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4"
     >
       <nav
-        className={`mx-auto flex max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1480px] items-center justify-between rounded-2xl border px-4 py-2.5 transition-all duration-300 sm:px-5 sm:py-3 ${
+        className={`mx-auto flex max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1480px] items-center justify-between rounded-2xl border px-5 py-3 sm:px-7 sm:py-3.5 transition-all duration-300 ${
           isScrolled
-            ? 'border-white/15 bg-[#030712]/90 shadow-2xl shadow-black/40 backdrop-blur-xl'
-            : 'border-white/10 bg-[#030712]/70 backdrop-blur-lg'
+            ? 'border-white/20 bg-[#030712]/95 shadow-2xl shadow-black/60 backdrop-blur-2xl'
+            : 'border-white/10 bg-[#030712]/80 backdrop-blur-xl'
         }`}
       >
-        {/* Logo */}
+        {/* Logo & Brand Heading */}
         <a
           href="#top"
-          className="group flex items-center gap-3"
+          className="group flex items-center gap-3.5"
           onClick={() => setMobileMenuOpen(false)}
         >
-          <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-cyan-400/25 bg-gradient-to-br from-cyan-400/15 to-purple-500/15 transition-all duration-300 group-hover:border-cyan-300/50 group-hover:scale-105 shadow-md shadow-cyan-950/30">
-            <span className="text-sm font-bold tracking-wide text-cyan-200">
+          <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl border border-cyan-400/30 bg-gradient-to-br from-cyan-400/20 via-blue-500/15 to-purple-500/20 transition-all duration-300 group-hover:border-cyan-300/60 group-hover:scale-105 shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+            <span className="text-base font-extrabold tracking-wide text-cyan-200">
               AP
             </span>
           </div>
 
           <div className="hidden sm:block">
-            <span className="text-sm sm:text-base font-semibold text-white group-hover:text-cyan-200 transition-colors">
+            <span className="text-base sm:text-lg font-bold tracking-tight text-white group-hover:text-cyan-200 transition-colors">
               Arun Prashath
             </span>
-            <span className="block text-[11px] text-cyan-400 font-mono font-medium tracking-wide">
-              AI / ML Engineer
-            </span>
+            <div className="flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+              <span className="block text-xs text-cyan-300 font-mono font-medium tracking-wide">
+                AI / ML Engineer
+              </span>
+            </div>
           </div>
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-1 lg:flex">
+        <div className="hidden items-center gap-1.5 lg:flex">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.replace('#', '')
             return (
               <a
                 key={item.label}
                 href={item.href}
-                className={`relative rounded-xl px-3.5 py-1.5 text-xs font-medium transition-all duration-200 ${
+                className={`relative rounded-xl px-4 py-2 text-sm sm:text-[15px] font-medium transition-all duration-200 ${
                   isActive
-                    ? 'text-cyan-300'
-                    : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
+                    ? 'text-cyan-300 font-semibold'
+                    : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
                 {isActive && (
                   <motion.span
                     layoutId="activeNavIndicator"
-                    className="absolute inset-0 rounded-xl border border-cyan-400/20 bg-cyan-400/10"
+                    className="absolute inset-0 rounded-xl border border-cyan-400/30 bg-cyan-400/15 shadow-[0_0_15px_rgba(34,211,238,0.15)]"
                     transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -104,16 +107,16 @@ function Navbar() {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-3">
           {/* Downloadable Resume Button */}
           <a
             href="/resume.pdf"
             download="Arun_Prashath_Resume.pdf"
-            className="flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3.5 py-1.5 text-xs font-medium text-cyan-200 transition-all duration-200 hover:border-cyan-300 hover:bg-cyan-400/20 hover:scale-105"
+            className="flex items-center gap-2 rounded-xl border border-cyan-400/35 bg-cyan-400/15 px-4 py-2 text-xs sm:text-sm font-semibold text-cyan-200 shadow-[0_0_15px_rgba(34,211,238,0.15)] transition-all duration-200 hover:border-cyan-300 hover:bg-cyan-400/25 hover:scale-105 active:scale-95"
             title="Download Resume PDF"
           >
             <svg
-              className="h-3.5 w-3.5"
+              className="h-4 w-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -126,22 +129,25 @@ function Navbar() {
               />
             </svg>
             <span>Resume</span>
+            <span className="rounded bg-cyan-400/20 px-1 py-0.2 font-mono text-[10px] text-cyan-300">
+              PDF
+            </span>
           </a>
 
           {/* Let's Talk CTA */}
           <a
             href="#contact"
-            className="hidden sm:flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-slate-200 transition-all duration-200 hover:border-white/25 hover:bg-white/10"
+            className="hidden sm:flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/10 px-4 py-2 text-xs sm:text-sm font-semibold text-white transition-all duration-200 hover:border-white/30 hover:bg-white/15 hover:scale-105 active:scale-95"
           >
             <span>Let's Talk</span>
-            <span className="text-cyan-400">→</span>
+            <span className="text-cyan-300 font-bold">→</span>
           </a>
 
           {/* Mobile Menu Toggle */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 text-slate-300 hover:bg-white/5 lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 text-slate-300 hover:bg-white/10 lg:hidden"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? '✕' : '☰'}
