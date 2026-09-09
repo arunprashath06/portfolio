@@ -26,7 +26,6 @@ const contactLinks = [
 function Contact() {
   const [state, handleSubmit] = useForm(FORMSPREE_FORM_ID)
   const [copiedEmail, setCopiedEmail] = useState(false)
-  const [showPhone, setShowPhone] = useState(false)
 
   const handleCopyEmail = (e) => {
     e.preventDefault()
@@ -171,49 +170,12 @@ function Contact() {
                 </motion.div>
               ))}
 
-              {/* Protected Phone / Direct Call Card (Anti-Spam Protected) */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.02] px-5 py-4 transition-all duration-300 hover:border-cyan-300/20 hover:bg-white/[0.04]"
-              >
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-medium">
-                    Phone / WhatsApp
-                  </p>
-                  <p className="mt-1 text-sm text-slate-300">
-                    {showPhone ? (
-                      <a
-                        href="tel:+916382907319"
-                        className="text-cyan-300 hover:underline font-mono"
-                      >
-                        +91-6382907319
-                      </a>
-                    ) : (
-                      <span className="text-slate-400">
-                        +91-638••••••• (Protected against spam)
-                      </span>
-                    )}
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setShowPhone(!showPhone)}
-                  className="rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[11px] font-medium text-cyan-300 transition hover:bg-cyan-400/20"
-                >
-                  {showPhone ? 'Hide' : 'Reveal'}
-                </button>
-              </motion.div>
-
               {/* Download Resume Quick Card */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
                 className="flex items-center justify-between rounded-xl border border-cyan-400/20 bg-gradient-to-r from-cyan-950/30 to-purple-950/20 p-4 shadow-lg"
               >
                 <div>
@@ -224,7 +186,7 @@ function Contact() {
                     Arun Prashath's Full Resume
                   </p>
                   <p className="text-[11px] text-slate-400">
-                    Verified phone number & contact info included in PDF
+                    Official credentials, project links & email included in PDF
                   </p>
                 </div>
 
