@@ -151,11 +151,11 @@ function Certifications() {
     <>
       <section
         id="certifications"
-        className="relative overflow-hidden px-6 py-32 sm:py-40"
+        className="relative overflow-hidden px-4 sm:px-6 py-24 sm:py-36"
       >
-        {/* Ambient background */}
-        <div className="pointer-events-none absolute -left-40 top-1/3 h-96 w-96 rounded-full bg-cyan-500/5 blur-[130px]" />
-        <div className="pointer-events-none absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-purple-500/5 blur-[130px]" />
+        {/* Ambient background - GPU Accelerated */}
+        <div className="pointer-events-none absolute -left-40 top-1/3 h-[400px] w-[400px] rounded-full [background:radial-gradient(circle,rgba(6,182,212,0.06)_0%,transparent_70%)]" />
+        <div className="pointer-events-none absolute -right-40 bottom-0 h-[400px] w-[400px] rounded-full [background:radial-gradient(circle,rgba(147,51,234,0.06)_0%,transparent_70%)]" />
 
         <div className="relative mx-auto max-w-7xl">
           {/* Section heading & Filter Tabs */}
@@ -183,8 +183,8 @@ function Certifications() {
               </p>
             </motion.div>
 
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-1.5 backdrop-blur-xl">
+            {/* Filter Tabs - Smooth swipeable on mobile */}
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar rounded-2xl border border-white/10 bg-slate-900/60 p-1.5 backdrop-blur-md max-w-full">
               {certCategories.map((cat) => {
                 const isSelected = selectedCategory === cat
                 return (

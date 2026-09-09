@@ -43,12 +43,11 @@ function Skills() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden px-6 py-32"
+      className="relative overflow-hidden px-4 sm:px-6 py-24 sm:py-32"
     >
-      {/* Background atmosphere */}
-      <div className="pointer-events-none absolute right-[-120px] top-1/4 h-96 w-96 rounded-full bg-cyan-500/5 blur-[130px]" />
-
-      <div className="pointer-events-none absolute left-[-120px] bottom-0 h-96 w-96 rounded-full bg-purple-500/5 blur-[130px]" />
+      {/* Background atmosphere - GPU Accelerated */}
+      <div className="pointer-events-none absolute right-[-100px] top-1/4 h-96 w-96 rounded-full [background:radial-gradient(circle,rgba(6,182,212,0.06)_0%,transparent_70%)]" />
+      <div className="pointer-events-none absolute left-[-100px] bottom-0 h-96 w-96 rounded-full [background:radial-gradient(circle,rgba(147,51,234,0.06)_0%,transparent_70%)]" />
 
       <div className="relative mx-auto max-w-7xl">
 

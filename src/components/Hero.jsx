@@ -49,10 +49,30 @@ function Hero() {
     return () => clearInterval(interval)
   }, [activeTab, refString.length])
 
+  const [consoleTouchState, setConsoleTouchState] = useState({ startX: 0, startY: 0 })
+  const consoleTabs = ['forecast', 'llm', 'paging']
+
+  const handleConsoleTouchStart = (e) => {
+    setConsoleTouchState({ startX: e.touches[0].clientX, startY: e.touches[0].clientY })
+  }
+
+  const handleConsoleTouchEnd = (e) => {
+    const diffX = consoleTouchState.startX - e.changedTouches[0].clientX
+    const diffY = consoleTouchState.startY - e.changedTouches[0].clientY
+    if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+      const currIdx = consoleTabs.indexOf(activeTab)
+      if (diffX > 0) {
+        setActiveTab(consoleTabs[(currIdx + 1) % consoleTabs.length])
+      } else {
+        setActiveTab(consoleTabs[(currIdx - 1 + consoleTabs.length) % consoleTabs.length])
+      }
+    }
+  }
+
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pb-20 pt-32 lg:pt-36"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 sm:px-6 pb-20 pt-28 sm:pt-32 lg:pt-36"
     >
       {/* Subtle Architectural Dot Grid — removes black void without clutter */}
       <div 
@@ -65,11 +85,11 @@ function Hero() {
         }}
       />
 
-      {/* Atmospheric Ambient Glows */}
-      <div className="pointer-events-none absolute -left-20 top-1/4 h-[500px] w-[500px] rounded-full bg-cyan-500/10 blur-[140px]" />
-      <div className="pointer-events-none absolute -right-20 top-1/3 h-[500px] w-[500px] rounded-full bg-purple-600/10 blur-[150px]" />
+      {/* Atmospheric Ambient Glows - GPU Accelerated */}
+      <div className="pointer-events-none absolute -left-20 top-1/4 h-[450px] w-[450px] rounded-full [background:radial-gradient(circle,rgba(6,182,212,0.1)_0%,transparent_70%)]" />
+      <div className="pointer-events-none absolute -right-20 top-1/3 h-[450px] w-[450px] rounded-full [background:radial-gradient(circle,rgba(147,51,234,0.1)_0%,transparent_70%)]" />
 
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-12 lg:gap-16">
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-12 lg:gap-16">
 
         {/* LEFT COLUMN: 7 cols */}
         <motion.div
@@ -176,8 +196,12 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="relative z-10 lg:col-span-5"
         >
-          {/* Subtle Outer Glow Frame */}
-          <div className="relative rounded-2xl border border-cyan-500/25 bg-slate-950/80 p-1 shadow-[0_0_60px_rgba(34,211,238,0.12)] backdrop-blur-xl">
+          {/* Subtle Outer Glow Frame with Touch Swipe */}
+          <div 
+            onTouchStart={handleConsoleTouchStart}
+            onTouchEnd={handleConsoleTouchEnd}
+            className="relative rounded-2xl border border-cyan-500/25 bg-slate-950/80 p-1 shadow-[0_0_60px_rgba(34,211,238,0.12)] backdrop-blur-md touch-pan-y"
+          >
             
             {/* Terminal Top Window Bar */}
             <div className="flex items-center justify-between border-b border-slate-800/80 px-4 py-3">
@@ -494,8 +518,9 @@ function Hero() {
 
             {/* Bottom Telemetry Bar */}
             <div className="flex items-center justify-between border-t border-slate-800/80 bg-slate-900/30 px-4 py-2 font-mono text-[10px] text-slate-500">
-              <span className="text-slate-400">Interactive Model Demo</span>
-              <span className="text-cyan-400">Select tabs above</span>
+              <span className="text-slate-400">Interactive Demo</span>
+              <span className="text-cyan-400 sm:hidden">Swipe ⇆ to switch tabs</span>
+              <span className="text-cyan-400 hidden sm:inline">Select tabs above</span>
             </div>
           </div>
         </motion.div>

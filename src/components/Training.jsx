@@ -13,6 +13,7 @@ const summerCertificate = {
 function Training() {
   const [certModalOpen, setCertModalOpen] = useState(false)
   const [viewMode, setViewMode] = useState('svg') // 'svg' | 'real'
+  const [forecastTouchState, setForecastTouchState] = useState({ startX: 0, startY: 0 })
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -31,9 +32,9 @@ function Training() {
   return (
     <>
       <section id="training" className="relative overflow-hidden px-6 py-28 sm:py-36">
-        {/* Ambient background glow */}
-        <div className="pointer-events-none absolute -right-32 top-1/3 h-[500px] w-[500px] rounded-full bg-purple-600/10 blur-[150px]" />
-        <div className="pointer-events-none absolute -left-32 bottom-1/4 h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[140px]" />
+        {/* Ambient background glow - GPU Accelerated */}
+        <div className="pointer-events-none absolute -right-32 top-1/3 h-[450px] w-[450px] rounded-full [background:radial-gradient(circle,rgba(147,51,234,0.08)_0%,transparent_70%)]" />
+        <div className="pointer-events-none absolute -left-32 bottom-1/4 h-[400px] w-[400px] rounded-full [background:radial-gradient(circle,rgba(6,182,212,0.08)_0%,transparent_70%)]" />
 
         <div className="mx-auto max-w-7xl">
           {/* Section Header */}
@@ -159,8 +160,20 @@ function Training() {
                   </div>
                 </div>
 
-                {/* Visual Output Panel: Prophet Forecast Chart & Anomaly Inspection */}
-                <div className="mt-7 overflow-hidden rounded-2xl border border-cyan-400/20 bg-[#060b17]/90 p-5 shadow-xl backdrop-blur-md">
+                {/* Visual Output Panel: Prophet Forecast Chart & Anomaly Inspection with Touch Swipe */}
+                <div 
+                  onTouchStart={(e) => {
+                    setForecastTouchState({ startX: e.touches[0].clientX, startY: e.touches[0].clientY })
+                  }}
+                  onTouchEnd={(e) => {
+                    const diffX = forecastTouchState.startX - e.changedTouches[0].clientX
+                    const diffY = forecastTouchState.startY - e.changedTouches[0].clientY
+                    if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+                      setViewMode(diffX > 0 ? 'real' : 'svg')
+                    }
+                  }}
+                  className="mt-7 overflow-hidden rounded-2xl border border-cyan-400/20 bg-[#060b17]/90 p-5 shadow-xl backdrop-blur-md touch-pan-y"
+                >
                   <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3">
                     <div className="flex items-center gap-2.5">
                       <span className="flex h-2.5 w-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />

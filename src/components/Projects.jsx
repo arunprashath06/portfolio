@@ -100,6 +100,7 @@ function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [activeViewTab, setActiveViewTab] = useState({}) // { [projectId]: 'output' | 'secondary' }
   const [lightboxData, setLightboxData] = useState(null) // { project, view: 'output' | 'secondary' }
+  const [touchState, setTouchState] = useState({ startX: 0, startY: 0 })
 
   // Keyboard navigation for lightbox
   useEffect(() => {
@@ -126,9 +127,9 @@ function Projects() {
 
   return (
     <section id="projects" className="relative px-6 py-28 sm:py-36">
-      {/* Background Ambient Glows */}
-      <div className="pointer-events-none absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-cyan-500/5 blur-[140px]" />
-      <div className="pointer-events-none absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-purple-500/5 blur-[140px]" />
+      {/* Background Ambient Glows - GPU Accelerated */}
+      <div className="pointer-events-none absolute left-1/4 top-1/4 h-[400px] w-[400px] rounded-full [background:radial-gradient(circle,rgba(6,182,212,0.08)_0%,transparent_70%)]" />
+      <div className="pointer-events-none absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full [background:radial-gradient(circle,rgba(147,51,234,0.08)_0%,transparent_70%)]" />
 
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
@@ -168,8 +169,8 @@ function Projects() {
             </motion.p>
           </div>
 
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap gap-2 rounded-2xl border border-white/10 bg-slate-900/50 p-1.5 backdrop-blur-xl">
+          {/* Category Filter Tabs - Smooth swipeable on mobile */}
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar rounded-2xl border border-white/10 bg-slate-900/60 p-1.5 backdrop-blur-md max-w-full">
             {categories.map((cat) => {
               const isSelected = selectedCategory === cat
               return (
@@ -360,10 +361,21 @@ function Projects() {
                           )}
                         </div>
 
-                        {/* Interactive Image Preview with zoom trigger */}
+                        {/* Interactive Image Preview with touch swipe & zoom trigger */}
                         <div
-                          className="relative cursor-pointer group/img overflow-hidden bg-black/40 flex items-center justify-center p-2 min-h-[220px]"
+                          className="relative cursor-pointer group/img overflow-hidden bg-black/40 flex items-center justify-center p-2 min-h-[220px] touch-pan-y"
                           onClick={() => setLightboxData({ project, view: currentView })}
+                          onTouchStart={(e) => {
+                            setTouchState({ startX: e.touches[0].clientX, startY: e.touches[0].clientY })
+                          }}
+                          onTouchEnd={(e) => {
+                            const diffX = touchState.startX - e.changedTouches[0].clientX
+                            const diffY = touchState.startY - e.changedTouches[0].clientY
+                            if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY) && project.secondaryImage) {
+                              const nextView = diffX > 0 ? 'secondary' : 'output'
+                              setActiveViewTab((prev) => ({ ...prev, [project.id]: nextView }))
+                            }
+                          }}
                         >
                           <img
                             src={currentView === 'output' ? project.realImage : project.secondaryImage}
@@ -471,8 +483,22 @@ function Projects() {
                   </div>
                 </div>
 
-                {/* Modal Main Display Area with optional left/right flip arrows */}
-                <div className="relative max-h-[75vh] min-h-[300px] overflow-auto flex items-center justify-center bg-black/40 rounded-xl p-2">
+                {/* Modal Main Display Area with optional left/right flip arrows & touch swipe */}
+                <div 
+                  className="relative max-h-[75vh] min-h-[300px] overflow-auto flex items-center justify-center bg-black/40 rounded-xl p-2 touch-pan-y"
+                  onTouchStart={(e) => {
+                    setTouchState({ startX: e.touches[0].clientX, startY: e.touches[0].clientY })
+                  }}
+                  onTouchEnd={(e) => {
+                    const diffX = touchState.startX - e.changedTouches[0].clientX
+                    const diffY = touchState.startY - e.changedTouches[0].clientY
+                    if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY) && lightboxData.project.secondaryImage) {
+                      const nextView = diffX > 0 ? 'secondary' : 'output'
+                      setLightboxData((prev) => ({ ...prev, view: nextView }))
+                      setActiveViewTab((prev) => ({ ...prev, [lightboxData.project.id]: nextView }))
+                    }
+                  }}
+                >
                   {lightboxData.project.secondaryImage && (
                     <>
                       <button
@@ -482,7 +508,7 @@ function Projects() {
                           setLightboxData((prev) => ({ ...prev, view: nextView }))
                           setActiveViewTab((prev) => ({ ...prev, [lightboxData.project.id]: nextView }))
                         }}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-slate-900/80 p-2.5 text-white backdrop-blur-md transition-all hover:scale-110 hover:bg-cyan-500/20"
+                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 rounded-full border border-white/20 bg-slate-900/80 p-2.5 sm:p-3 text-white backdrop-blur-md transition-all hover:scale-110 hover:bg-cyan-500/20"
                         title="Previous View"
                       >
                         ◀
@@ -495,7 +521,7 @@ function Projects() {
                           setLightboxData((prev) => ({ ...prev, view: nextView }))
                           setActiveViewTab((prev) => ({ ...prev, [lightboxData.project.id]: nextView }))
                         }}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-slate-900/80 p-2.5 text-white backdrop-blur-md transition-all hover:scale-110 hover:bg-cyan-500/20"
+                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 rounded-full border border-white/20 bg-slate-900/80 p-2.5 sm:p-3 text-white backdrop-blur-md transition-all hover:scale-110 hover:bg-cyan-500/20"
                         title="Next View"
                       >
                         ▶
@@ -509,6 +535,15 @@ function Projects() {
                     className="max-h-[72vh] max-w-full rounded-lg object-contain"
                   />
                 </div>
+
+                {/* Mobile Touch Navigation Hint */}
+                {lightboxData.project.secondaryImage && (
+                  <div className="mt-2 text-center sm:hidden">
+                    <span className="font-mono text-[11px] text-cyan-400">
+                      ⇄ Swipe left or right to switch images
+                    </span>
+                  </div>
+                )}
               </motion.div>
             </motion.div>
           )

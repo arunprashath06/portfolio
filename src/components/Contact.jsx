@@ -39,11 +39,15 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden px-6 py-32 sm:py-40"
+      className="relative overflow-hidden px-4 sm:px-6 py-24 sm:py-36"
     >
-      {/* Background atmosphere */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/5 blur-[140px]" />
-      <div className="pointer-events-none absolute left-10 bottom-10 h-72 w-72 rounded-full bg-cyan-500/5 blur-[120px]" />
+      {/* Background atmosphere - GPU accelerated radial gradient */}
+      <div 
+        className="pointer-events-none absolute inset-0 opacity-40"
+        style={{
+          background: 'radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.07) 0%, transparent 60%), radial-gradient(circle at 10% 90%, rgba(34, 211, 238, 0.05) 0%, transparent 50%)'
+        }}
+      />
 
       <div className="relative mx-auto max-w-7xl">
         {/* Section heading */}

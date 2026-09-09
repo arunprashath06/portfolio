@@ -34,11 +34,11 @@ function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden px-6 py-32 sm:py-40"
+      className="relative overflow-hidden px-4 sm:px-6 py-24 sm:py-36"
     >
-      {/* Background glow */}
-      <div className="pointer-events-none absolute left-1/4 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/5 blur-[120px]" />
-      <div className="pointer-events-none absolute right-10 top-1/3 h-80 w-80 rounded-full bg-purple-500/5 blur-[120px]" />
+      {/* Background glow - GPU Accelerated */}
+      <div className="pointer-events-none absolute left-1/4 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full [background:radial-gradient(circle,rgba(6,182,212,0.06)_0%,transparent_70%)]" />
+      <div className="pointer-events-none absolute right-10 top-1/3 h-80 w-80 rounded-full [background:radial-gradient(circle,rgba(147,51,234,0.06)_0%,transparent_70%)]" />
 
       <div className="relative mx-auto max-w-7xl">
         {/* Section label */}
