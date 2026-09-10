@@ -53,7 +53,7 @@ function Navbar() {
       />
 
       <nav
-        className={`pointer-events-auto mx-auto flex max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1440px] items-center justify-between rounded-2xl border px-4 py-2.5 sm:px-6 sm:py-3 transition-all duration-300 ${
+        className={`pointer-events-auto mx-auto flex max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1440px] min-h-[64px] sm:min-h-[68px] items-center justify-between rounded-2xl border px-4 py-2 sm:px-6 sm:py-2.5 transition-all duration-300 ${
           isScrolled
             ? 'border-slate-200/80 dark:border-white/20 bg-white/95 dark:bg-[#030712]/95 shadow-xl dark:shadow-2xl shadow-slate-200/50 dark:shadow-black/70 backdrop-blur-2xl'
             : 'border-slate-200/60 dark:border-white/10 bg-white/80 dark:bg-[#030712]/80 shadow-sm dark:shadow-none backdrop-blur-xl'
@@ -62,22 +62,22 @@ function Navbar() {
         {/* Logo & Brand Heading */}
         <a
           href="#top"
-          className="group flex items-center gap-3"
+          className="group flex items-center gap-2.5 sm:gap-3 shrink-0"
           onClick={() => setMobileMenuOpen(false)}
         >
-          <div className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl border border-cyan-400/30 bg-gradient-to-br from-cyan-400/20 via-blue-500/15 to-purple-500/20 transition-all duration-300 group-hover:border-cyan-300/60 group-hover:scale-105 shadow-[0_0_15px_rgba(34,211,238,0.2)]">
-            <span className="text-sm font-bold tracking-wide text-cyan-200">
+          <div className="relative flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center overflow-hidden rounded-xl border border-cyan-400/30 bg-gradient-to-br from-cyan-400/20 via-blue-500/15 to-purple-500/20 transition-all duration-300 group-hover:border-cyan-300/60 group-hover:scale-105 shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+            <span className="text-sm sm:text-base font-bold tracking-wide text-cyan-200">
               AP
             </span>
           </div>
 
-          <div className="hidden sm:block">
-            <span className="text-sm sm:text-base font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-200 transition-colors">
+          <div className="hidden sm:flex flex-col justify-center">
+            <span className="text-sm sm:text-base font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-200 transition-colors leading-tight">
               Arun Prashath
             </span>
-            <div className="flex items-center gap-1.5">
-              <span className="h-1 w-1 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-pulse" />
-              <span className="block text-[11px] text-cyan-700 dark:text-cyan-300 font-mono font-medium tracking-wide">
+            <div className="flex items-center gap-1.5 mt-0.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-pulse" />
+              <span className="block text-[11px] text-cyan-700 dark:text-cyan-300 font-mono font-medium tracking-wide leading-none">
                 AI / ML Engineer
               </span>
             </div>
@@ -85,14 +85,14 @@ function Navbar() {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-1 lg:flex">
+        <div className="hidden items-center gap-1 xl:gap-2 lg:flex">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.replace('#', '')
             return (
               <a
                 key={item.label}
                 href={item.href}
-                className={`relative rounded-xl px-3.5 py-1.5 text-xs sm:text-sm font-medium transition-all duration-200 ${
+                className={`relative rounded-xl px-2.5 lg:px-3 xl:px-3.5 py-1.5 text-xs lg:text-[13px] xl:text-sm font-medium transition-all duration-200 ${
                   isActive
                     ? 'text-cyan-700 dark:text-cyan-300 font-semibold'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-white/[0.06]'
@@ -112,12 +112,12 @@ function Navbar() {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           {/* Dark / Light Theme Toggle */}
           <button
             type="button"
             onClick={toggleTheme}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-300 dark:border-white/15 bg-slate-100/80 dark:bg-white/10 text-slate-700 dark:text-cyan-200 shadow-sm transition-all duration-200 hover:scale-105 hover:border-cyan-500 dark:hover:border-cyan-400 active:scale-95"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-300 dark:border-white/15 bg-slate-100/80 dark:bg-white/10 text-slate-700 dark:text-cyan-200 shadow-sm transition-all duration-200 hover:scale-105 hover:border-cyan-500 dark:hover:border-cyan-400 active:scale-95 shrink-0"
             title={isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
             aria-label="Toggle Dark/Light Theme"
           >
@@ -138,7 +138,7 @@ function Navbar() {
           <a
             href="./resume.pdf"
             download="Arun_Prashath_Resume.pdf"
-            className="flex items-center gap-1.5 rounded-xl border border-cyan-500/35 dark:border-cyan-400/35 bg-cyan-500/10 dark:bg-cyan-400/15 px-3 py-1.5 text-xs sm:text-sm font-semibold text-cyan-800 dark:text-cyan-200 shadow-[0_0_15px_rgba(34,211,238,0.15)] transition-all duration-200 hover:border-cyan-400 dark:hover:border-cyan-300 hover:scale-105 active:scale-95"
+            className="flex items-center gap-1.5 rounded-xl border border-cyan-500/35 dark:border-cyan-400/35 bg-cyan-500/10 dark:bg-cyan-400/15 px-3 py-1.5 text-xs sm:text-sm font-semibold text-cyan-800 dark:text-cyan-200 shadow-[0_0_15px_rgba(34,211,238,0.15)] transition-all duration-200 hover:border-cyan-400 dark:hover:border-cyan-300 hover:scale-105 active:scale-95 shrink-0"
             title="Download Resume PDF"
           >
             <svg
@@ -163,7 +163,7 @@ function Navbar() {
           {/* Let's Talk CTA */}
           <a
             href="#contact"
-            className="hidden sm:flex items-center gap-1.5 rounded-xl border border-slate-300 dark:border-white/15 bg-slate-900 text-white dark:bg-white/10 dark:text-white px-3.5 py-1.5 text-xs sm:text-sm font-semibold transition-all duration-200 hover:bg-slate-800 dark:hover:bg-white/15 hover:scale-105 active:scale-95"
+            className="hidden xl:flex items-center gap-1.5 rounded-xl border border-slate-300 dark:border-white/15 bg-slate-900 text-white dark:bg-white/10 dark:text-white px-3.5 py-1.5 text-xs sm:text-sm font-semibold transition-all duration-200 hover:bg-slate-800 dark:hover:bg-white/15 hover:scale-105 active:scale-95 shrink-0"
           >
             <span>Let's Talk</span>
             <span className="text-cyan-400 font-bold">→</span>
