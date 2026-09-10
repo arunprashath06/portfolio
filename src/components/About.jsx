@@ -48,7 +48,7 @@ function About() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
+          <p className="text-xs uppercase tracking-[0.3em] text-cyan-700 dark:text-cyan-300 font-mono">
             01 / About
           </p>
         </motion.div>
@@ -61,11 +61,11 @@ function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7 }}
-              className="max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl"
+              className="max-w-3xl text-4xl font-semibold leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl"
             >
               Curious by nature.
               <br />
-              <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 dark:from-cyan-300 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                 Building with intelligence.
               </span>
             </motion.h2>
@@ -75,10 +75,10 @@ function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="mt-8 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg"
+              className="mt-8 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg"
             >
               I'm{' '}
-              <span className="font-medium text-slate-200">
+              <span className="font-medium text-slate-900 dark:text-slate-100">
                 Arun Prashath
               </span>
               , a B.Tech CSE student focused on building a strong foundation
@@ -90,7 +90,7 @@ function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="mt-5 max-w-2xl text-base leading-8 text-slate-500"
+              className="mt-5 max-w-2xl text-base leading-8 text-slate-500 dark:text-slate-400"
             >
               I enjoy taking an idea from a problem statement to a working
               system — combining algorithms, data and AI to create things that
@@ -110,9 +110,9 @@ function About() {
                   key={area}
                   whileHover={{ y: -3, scale: 1.03 }}
                   transition={{ type: 'spring', stiffness: 300 }}
-                  className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-300 backdrop-blur-sm"
+                  className="rounded-full border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-white/[0.03] px-4 py-2 text-sm text-slate-700 dark:text-slate-300 shadow-sm dark:shadow-none backdrop-blur-sm"
                 >
-                  <span className="mr-2 text-cyan-300">✦</span>
+                  <span className="mr-2 text-cyan-600 dark:text-cyan-300">✦</span>
                   {area}
                 </motion.div>
               ))}
@@ -131,27 +131,27 @@ function About() {
             <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-tr from-cyan-500/20 via-blue-500/10 to-purple-600/20 blur-2xl" />
 
             {/* Main Portrait Card Frame */}
-            <div className="relative w-full max-w-md overflow-hidden rounded-[2.5rem] border border-cyan-400/25 bg-gradient-to-b from-[#081020]/90 to-[#030712]/95 p-6 shadow-2xl backdrop-blur-xl">
+            <div className="relative w-full max-w-md overflow-hidden rounded-[2.5rem] border border-cyan-500/30 dark:border-cyan-400/25 bg-white/95 dark:bg-gradient-to-b dark:from-[#081020]/90 dark:to-[#030712]/95 p-6 shadow-xl dark:shadow-2xl backdrop-blur-xl transition-colors">
               {/* Corner accents */}
-              <div className="absolute left-3 top-3 h-3 w-3 border-l-2 border-t-2 border-cyan-400/50" />
-              <div className="absolute right-3 top-3 h-3 w-3 border-r-2 border-t-2 border-cyan-400/50" />
-              <div className="absolute bottom-3 left-3 h-3 w-3 border-b-2 border-l-2 border-cyan-400/50" />
-              <div className="absolute bottom-3 right-3 h-3 w-3 border-b-2 border-r-2 border-cyan-400/50" />
+              <div className="absolute left-3 top-3 h-3 w-3 border-l-2 border-t-2 border-cyan-500/50 dark:border-cyan-400/50" />
+              <div className="absolute right-3 top-3 h-3 w-3 border-r-2 border-t-2 border-cyan-500/50 dark:border-cyan-400/50" />
+              <div className="absolute bottom-3 left-3 h-3 w-3 border-b-2 border-l-2 border-cyan-500/50 dark:border-cyan-400/50" />
+              <div className="absolute bottom-3 right-3 h-3 w-3 border-b-2 border-r-2 border-cyan-500/50 dark:border-cyan-400/50" />
 
               {/* Header status */}
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-500 dark:bg-cyan-400 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500 dark:bg-cyan-400" />
                   </span>
-                  <span className="text-xs font-mono tracking-wider text-cyan-300">ENGINEER PROFILE</span>
+                  <span className="text-xs font-mono tracking-wider text-cyan-700 dark:text-cyan-300">ENGINEER PROFILE</span>
                 </div>
-                <span className="rounded bg-white/5 px-2 py-0.5 text-[10px] font-mono text-slate-400">LPU · 2024–2028</span>
+                <span className="rounded bg-slate-100 dark:bg-white/5 px-2 py-0.5 text-[10px] font-mono text-slate-600 dark:text-slate-400">LPU · 2024–2028</span>
               </div>
 
               {/* Photo Frame / Avatar Canvas */}
-              <div className="relative mt-5 flex h-72 w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#02050e]">
+              <div className="relative mt-5 flex h-72 w-full items-center justify-center overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-[#02050e]">
                 {/* Check if user placed profile image in public/profile.jpg or profile.png */}
                 {!imageError ? (
                   <img
@@ -174,22 +174,22 @@ function About() {
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-                      className="absolute h-48 w-48 rounded-full border border-cyan-400/20 border-dashed"
+                      className="absolute h-48 w-48 rounded-full border border-cyan-400/30 border-dashed"
                     />
                     <motion.div
                       animate={{ rotate: -360 }}
                       transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-                      className="absolute h-36 w-36 rounded-full border border-purple-400/20"
+                      className="absolute h-36 w-36 rounded-full border border-purple-400/30"
                     />
 
                     {/* Initials badge */}
-                    <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl border border-cyan-400/40 bg-gradient-to-br from-cyan-400/20 via-blue-500/20 to-purple-500/20 shadow-[0_0_30px_rgba(34,211,238,0.25)]">
-                      <span className="text-3xl font-bold tracking-wider text-white">AP</span>
+                    <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl border border-cyan-500/40 bg-gradient-to-br from-cyan-400/20 via-blue-500/20 to-purple-500/20 shadow-[0_0_30px_rgba(34,211,238,0.25)]">
+                      <span className="text-3xl font-bold tracking-wider text-slate-900 dark:text-white">AP</span>
                     </div>
 
-                    <p className="mt-4 text-xs font-medium text-slate-300">Arun Prashath</p>
-                    <p className="mt-0.5 text-[11px] text-cyan-300 font-mono">B.Tech CSE · AI & ML</p>
-                    <span className="mt-2 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[9px] text-slate-500">
+                    <p className="mt-4 text-xs font-medium text-slate-800 dark:text-slate-300">Arun Prashath</p>
+                    <p className="mt-0.5 text-[11px] text-cyan-700 dark:text-cyan-300 font-mono">B.Tech CSE · AI & ML</p>
+                    <span className="mt-2 rounded-full border border-slate-300 dark:border-white/10 bg-white/80 dark:bg-white/5 px-2.5 py-0.5 text-[9px] text-slate-500">
                       Drop profile.jpg into public/ to display photo
                     </span>
                   </div>
@@ -198,17 +198,17 @@ function About() {
 
               {/* Bio summary tags below image */}
               <div className="mt-5 grid grid-cols-3 gap-2 text-center text-xs">
-                <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2.5">
+                <div className="rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-white/[0.02] p-2.5">
                   <p className="text-[10px] text-slate-500 uppercase">Focus</p>
-                  <p className="mt-0.5 font-semibold text-white">AI / ML</p>
+                  <p className="mt-0.5 font-semibold text-slate-900 dark:text-white">AI / ML</p>
                 </div>
-                <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2.5">
+                <div className="rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-white/[0.02] p-2.5">
                   <p className="text-[10px] text-slate-500 uppercase">Core DSA</p>
-                  <p className="mt-0.5 font-semibold text-cyan-300">C++</p>
+                  <p className="mt-0.5 font-semibold text-cyan-700 dark:text-cyan-300">C++</p>
                 </div>
-                <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2.5">
+                <div className="rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-white/[0.02] p-2.5">
                   <p className="text-[10px] text-slate-500 uppercase">Stack</p>
-                  <p className="mt-0.5 font-semibold text-purple-300">Python</p>
+                  <p className="mt-0.5 font-semibold text-purple-700 dark:text-purple-300">Python</p>
                 </div>
               </div>
             </div>
@@ -216,7 +216,7 @@ function About() {
         </div>
 
         {/* Stats */}
-        <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4">
+        <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-200 dark:bg-white/10 sm:grid-cols-4 shadow-sm dark:shadow-none">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -227,9 +227,9 @@ function About() {
                 duration: 0.5,
                 delay: index * 0.1,
               }}
-              className="bg-[#030712] px-6 py-7"
+              className="bg-white dark:bg-[#030712] px-6 py-7 transition-colors"
             >
-              <p className="text-2xl font-semibold text-white">
+              <p className="text-2xl font-semibold text-slate-900 dark:text-white">
                 {stat.value}
               </p>
 

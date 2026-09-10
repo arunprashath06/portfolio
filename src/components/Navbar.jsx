@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
+import { useTheme } from '../context/ThemeContext'
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -12,6 +13,7 @@ const navItems = [
 ]
 
 function Navbar() {
+  const { isDark, toggleTheme } = useTheme()
   const [activeSection, setActiveSection] = useState('home')
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -50,8 +52,8 @@ function Navbar() {
       <nav
         className={`mx-auto flex max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1440px] items-center justify-between rounded-2xl border px-4 py-2 sm:px-6 sm:py-2.5 transition-all duration-300 ${
           isScrolled
-            ? 'border-white/20 bg-[#030712]/95 shadow-2xl shadow-black/60 backdrop-blur-2xl'
-            : 'border-white/10 bg-[#030712]/80 backdrop-blur-xl'
+            ? 'border-slate-200/80 dark:border-white/20 bg-white/90 dark:bg-[#030712]/95 shadow-lg dark:shadow-2xl shadow-slate-200/50 dark:shadow-black/60 backdrop-blur-2xl'
+            : 'border-slate-200/60 dark:border-white/10 bg-white/75 dark:bg-[#030712]/80 shadow-sm dark:shadow-none backdrop-blur-xl'
         }`}
       >
         {/* Logo & Brand Heading */}
@@ -67,12 +69,12 @@ function Navbar() {
           </div>
 
           <div className="hidden sm:block">
-            <span className="text-sm sm:text-base font-bold tracking-tight text-white group-hover:text-cyan-200 transition-colors">
+            <span className="text-sm sm:text-base font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-200 transition-colors">
               Arun Prashath
             </span>
             <div className="flex items-center gap-1.5">
-              <span className="h-1 w-1 rounded-full bg-cyan-400 animate-pulse" />
-              <span className="block text-[11px] text-cyan-300 font-mono font-medium tracking-wide">
+              <span className="h-1 w-1 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-pulse" />
+              <span className="block text-[11px] text-cyan-700 dark:text-cyan-300 font-mono font-medium tracking-wide">
                 AI / ML Engineer
               </span>
             </div>
@@ -89,14 +91,14 @@ function Navbar() {
                 href={item.href}
                 className={`relative rounded-xl px-3.5 py-1.5 text-xs sm:text-sm font-medium transition-all duration-200 ${
                   isActive
-                    ? 'text-cyan-300 font-semibold'
-                    : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
+                    ? 'text-cyan-700 dark:text-cyan-300 font-semibold'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-white/[0.06]'
                 }`}
               >
                 {isActive && (
                   <motion.span
                     layoutId="activeNavIndicator"
-                    className="absolute inset-0 rounded-xl border border-cyan-400/30 bg-cyan-400/15 shadow-[0_0_15px_rgba(34,211,238,0.15)]"
+                    className="absolute inset-0 rounded-xl border border-cyan-500/30 dark:border-cyan-400/30 bg-cyan-500/10 dark:bg-cyan-400/15 shadow-[0_0_15px_rgba(34,211,238,0.15)]"
                     transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -107,12 +109,33 @@ function Navbar() {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
+          {/* Dark / Light Theme Toggle */}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-300 dark:border-white/15 bg-slate-100/80 dark:bg-white/10 text-slate-700 dark:text-cyan-200 shadow-sm transition-all duration-200 hover:scale-105 hover:border-cyan-500 dark:hover:border-cyan-400 active:scale-95"
+            title={isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
+            aria-label="Toggle Dark/Light Theme"
+          >
+            {isDark ? (
+              // Sun icon for dark mode (click to switch to light)
+              <svg className="h-4 w-4 text-amber-400 transition-transform duration-300 hover:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            ) : (
+              // Moon icon for light mode (click to switch to dark)
+              <svg className="h-4 w-4 text-slate-800 transition-transform duration-300 hover:-rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            )}
+          </button>
+
           {/* Downloadable Resume Button */}
           <a
             href="./resume.pdf"
             download="Arun_Prashath_Resume.pdf"
-            className="flex items-center gap-1.5 rounded-xl border border-cyan-400/35 bg-cyan-400/15 px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-cyan-200 shadow-[0_0_15px_rgba(34,211,238,0.15)] transition-all duration-200 hover:border-cyan-300 hover:bg-cyan-400/25 hover:scale-105 active:scale-95"
+            className="flex items-center gap-1.5 rounded-xl border border-cyan-500/35 dark:border-cyan-400/35 bg-cyan-500/10 dark:bg-cyan-400/15 px-3 py-1.5 text-xs sm:text-sm font-semibold text-cyan-800 dark:text-cyan-200 shadow-[0_0_15px_rgba(34,211,238,0.15)] transition-all duration-200 hover:border-cyan-400 dark:hover:border-cyan-300 hover:scale-105 active:scale-95"
             title="Download Resume PDF"
           >
             <svg
@@ -129,7 +152,7 @@ function Navbar() {
               />
             </svg>
             <span>Resume</span>
-            <span className="rounded bg-cyan-400/20 px-1 py-0.2 font-mono text-[9px] text-cyan-300">
+            <span className="rounded bg-cyan-500/20 dark:bg-cyan-400/20 px-1 py-0.2 font-mono text-[9px] text-cyan-800 dark:text-cyan-300">
               PDF
             </span>
           </a>
@@ -137,17 +160,17 @@ function Navbar() {
           {/* Let's Talk CTA */}
           <a
             href="#contact"
-            className="hidden sm:flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-white transition-all duration-200 hover:border-white/30 hover:bg-white/15 hover:scale-105 active:scale-95"
+            className="hidden sm:flex items-center gap-1.5 rounded-xl border border-slate-300 dark:border-white/15 bg-slate-900 text-white dark:bg-white/10 dark:text-white px-3.5 py-1.5 text-xs sm:text-sm font-semibold transition-all duration-200 hover:bg-slate-800 dark:hover:bg-white/15 hover:scale-105 active:scale-95"
           >
             <span>Let's Talk</span>
-            <span className="text-cyan-300 font-bold">→</span>
+            <span className="text-cyan-400 font-bold">→</span>
           </a>
 
           {/* Mobile Menu Toggle */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 text-slate-300 hover:bg-white/10 lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-300 dark:border-white/15 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10 lg:hidden"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? '✕' : '☰'}
@@ -163,7 +186,7 @@ function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="mt-2 overflow-hidden rounded-2xl border border-white/10 bg-[#030712]/95 p-4 shadow-2xl backdrop-blur-2xl lg:hidden"
+            className="mt-2 overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-[#030712]/95 p-4 shadow-2xl backdrop-blur-2xl lg:hidden"
           >
             <div className="flex flex-col gap-1.5">
               {navItems.map((item) => (
@@ -171,23 +194,30 @@ function Navbar() {
                   key={item.label}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-xl px-4 py-2.5 text-sm text-slate-300 transition-colors hover:bg-white/5 hover:text-white"
+                  className="rounded-xl px-4 py-2.5 text-sm text-slate-700 dark:text-slate-300 transition-colors hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-950 dark:hover:text-white"
                 >
                   {item.label}
                 </a>
               ))}
-              <div className="mt-2 flex gap-2 border-t border-white/10 pt-3">
+              <div className="mt-2 flex items-center gap-2 border-t border-slate-200 dark:border-white/10 pt-3">
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  className="flex items-center justify-center gap-2 rounded-xl border border-slate-300 dark:border-white/15 bg-slate-100 dark:bg-white/5 py-2.5 px-3 text-xs font-medium text-slate-700 dark:text-slate-200"
+                >
+                  {isDark ? '☀️ Light Mode' : '🌙 Dark Mode'}
+                </button>
                 <a
                   href="./resume.pdf"
                   download="Arun_Prashath_Resume.pdf"
-                  className="flex-1 rounded-xl border border-cyan-400/30 bg-cyan-400/10 py-2.5 text-center text-xs font-medium text-cyan-200"
+                  className="flex-1 rounded-xl border border-cyan-500/30 dark:border-cyan-400/30 bg-cyan-500/10 dark:bg-cyan-400/10 py-2.5 text-center text-xs font-medium text-cyan-800 dark:text-cyan-200"
                 >
-                  Download Resume
+                  Resume
                 </a>
                 <a
                   href="#contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex-1 rounded-xl border border-white/10 bg-white/5 py-2.5 text-center text-xs font-medium text-slate-200"
+                  className="flex-1 rounded-xl border border-slate-300 dark:border-white/10 bg-slate-900 text-white dark:bg-white/5 dark:text-slate-200 py-2.5 text-center text-xs font-medium"
                 >
                   Contact
                 </a>

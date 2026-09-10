@@ -166,25 +166,25 @@ function Certifications() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.7 }}
             >
-              <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
+              <p className="text-xs uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-300 font-mono">
                 05 / Certifications
               </p>
 
-              <h2 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+              <h2 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
                 Proof of{' '}
-                <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 dark:from-cyan-300 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                   continuous learning.
                 </span>
               </h2>
 
-              <p className="mt-4 max-w-2xl text-base text-slate-400 sm:text-lg">
+              <p className="mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-400 sm:text-lg">
                 Verified credentials across AI engineering, computer science, and
                 software development. Click any card to inspect or download instantly.
               </p>
             </motion.div>
 
             {/* Filter Tabs - Smooth swipeable on mobile */}
-            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar rounded-2xl border border-white/10 bg-slate-900/60 p-1.5 backdrop-blur-md max-w-full">
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-100/80 dark:bg-slate-900/60 p-1.5 backdrop-blur-md max-w-full">
               {certCategories.map((cat) => {
                 const isSelected = selectedCategory === cat
                 return (
@@ -194,14 +194,14 @@ function Certifications() {
                     onClick={() => setSelectedCategory(cat)}
                     className={`relative rounded-xl px-3.5 py-2 text-xs font-medium transition-colors duration-200 ${
                       isSelected
-                        ? 'text-white'
-                        : 'text-slate-400 hover:text-slate-200'
+                        ? 'text-slate-900 dark:text-white font-semibold'
+                        : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                     }`}
                   >
                     {isSelected && (
                       <motion.div
                         layoutId="activeCertFilter"
-                        className="absolute inset-0 rounded-xl border border-cyan-400/30 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 shadow-[0_0_15px_rgba(34,211,238,0.15)]"
+                        className="absolute inset-0 rounded-xl border border-cyan-500/30 dark:border-cyan-400/30 bg-white dark:bg-gradient-to-r dark:from-cyan-500/20 dark:to-purple-500/20 shadow-sm dark:shadow-[0_0_15px_rgba(34,211,238,0.15)]"
                         transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                       />
                     )}
@@ -229,24 +229,24 @@ function Certifications() {
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   whileHover={{ y: -6 }}
-                  className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.035] to-white/[0.01] p-6 transition-all duration-300 hover:border-cyan-300/30 hover:bg-white/[0.05] shadow-lg gpu-accelerated"
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-gradient-to-br dark:from-white/[0.035] dark:to-white/[0.01] p-6 transition-all duration-300 hover:border-cyan-400/40 dark:hover:border-cyan-300/30 hover:bg-white/95 dark:hover:bg-white/[0.05] shadow-sm dark:shadow-lg gpu-accelerated backdrop-blur-sm"
                 >
                   {/* Hover glow */}
                   <div className="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-cyan-400/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                   <div>
                     {/* Top Credential Header: Certificate ID & Badge */}
-                    <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-3">
+                    <div className="flex items-center justify-between gap-2 border-b border-slate-100 dark:border-white/5 pb-3">
                       <span className="font-mono text-[11px] tracking-wider text-slate-500">
                         {certificate.credentialId}
                       </span>
 
                       {certificate.badge ? (
-                        <span className="rounded-full border border-purple-400/30 bg-purple-400/15 px-2.5 py-0.5 text-[10px] font-semibold text-purple-200">
+                        <span className="rounded-full border border-purple-500/30 dark:border-purple-400/30 bg-purple-500/10 dark:bg-purple-400/15 px-2.5 py-0.5 text-[10px] font-semibold text-purple-700 dark:text-purple-200">
                           {certificate.badge}
                         </span>
                       ) : (
-                        <span className="rounded-md border border-cyan-400/20 bg-cyan-400/10 px-2 py-0.5 text-[10px] font-medium text-cyan-300">
+                        <span className="rounded-md border border-cyan-500/20 dark:border-cyan-400/20 bg-cyan-500/10 dark:bg-cyan-400/10 px-2 py-0.5 text-[10px] font-medium text-cyan-700 dark:text-cyan-300">
                           {certificate.type === 'pdf' ? 'PDF Doc' : 'Verified PNG'}
                         </span>
                       )}
@@ -254,15 +254,15 @@ function Certifications() {
 
                     {/* Certificate Emblem & Title */}
                     <div className="mt-5 flex items-start gap-3.5">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 transition-all duration-300 group-hover:border-cyan-300/40 group-hover:bg-cyan-300/20">
-                        <span className="text-base text-cyan-300">✦</span>
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-500/20 dark:border-cyan-300/20 bg-cyan-500/10 dark:bg-cyan-300/10 transition-all duration-300 group-hover:border-cyan-500/40 dark:group-hover:border-cyan-300/40 group-hover:bg-cyan-500/20 dark:group-hover:bg-cyan-300/20">
+                        <span className="text-base text-cyan-600 dark:text-cyan-300">✦</span>
                       </div>
 
                       <div className="min-w-0 flex-1">
-                        <h3 className="text-base font-semibold leading-snug text-white group-hover:text-cyan-200 transition-colors">
+                        <h3 className="text-base font-semibold leading-snug text-slate-900 dark:text-white group-hover:text-cyan-700 dark:group-hover:text-cyan-200 transition-colors">
                           {certificate.title}
                         </h3>
-                        <p className="mt-1 text-xs text-slate-400">
+                        <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
                           {certificate.issuer}
                         </p>
                       </div>
@@ -275,12 +275,12 @@ function Certifications() {
                   </div>
 
                   {/* Visible Two-Action Strip: Preview First + Direct Download */}
-                  <div className="mt-6 flex items-center gap-2 border-t border-white/5 pt-4">
+                  <div className="mt-6 flex items-center gap-2 border-t border-slate-100 dark:border-white/5 pt-4">
                     {/* Preview Button */}
                     <button
                       type="button"
                       onClick={() => openCertificate(certificate)}
-                      className="flex-1 flex items-center justify-center gap-1.5 rounded-xl border border-cyan-400/30 bg-cyan-400/10 py-2 text-xs font-medium text-cyan-200 transition hover:bg-cyan-400/20 hover:border-cyan-300"
+                      className="flex-1 flex items-center justify-center gap-1.5 rounded-xl border border-cyan-500/30 dark:border-cyan-400/30 bg-cyan-500/10 dark:bg-cyan-400/10 py-2 text-xs font-semibold text-cyan-700 dark:text-cyan-200 transition hover:bg-cyan-500/20 dark:hover:bg-cyan-400/20 hover:border-cyan-500 dark:hover:border-cyan-300"
                     >
                       <span>Preview</span>
                       <span>↗</span>
@@ -290,7 +290,7 @@ function Certifications() {
                     <a
                       href={certificate.file}
                       download={certificate.downloadName}
-                      className="flex items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-medium text-slate-300 transition hover:border-white/20 hover:bg-white/10 hover:text-white"
+                      className="flex items-center justify-center gap-1.5 rounded-xl border border-slate-300 dark:border-white/10 bg-slate-100 dark:bg-white/5 px-3.5 py-2 text-xs font-medium text-slate-700 dark:text-slate-300 transition hover:border-slate-400 dark:hover:border-white/20 hover:bg-slate-200 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-white"
                       title={`Download ${certificate.downloadName}`}
                     >
                       <svg
@@ -323,7 +323,7 @@ function Certifications() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-md sm:p-6 lg:p-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 dark:bg-black/90 p-4 backdrop-blur-md sm:p-6 lg:p-8"
             onMouseDown={(event) => {
               if (event.target === event.currentTarget) {
                 closeCertificate()
@@ -352,21 +352,21 @@ function Certifications() {
                 damping: 26,
               }}
               onMouseDown={(event) => event.stopPropagation()}
-              className="relative flex max-h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#080d18] shadow-2xl shadow-black/50"
+              className="relative flex max-h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#080d18] shadow-2xl shadow-black/50"
             >
               {/* Modal header */}
-              <div className="flex shrink-0 items-center justify-between border-b border-white/10 px-6 py-4">
+              <div className="flex shrink-0 items-center justify-between border-b border-slate-200 dark:border-white/10 px-6 py-4">
                 <div className="min-w-0 pr-4">
                   {selectedCertificate.badge && (
-                    <span className="mb-1 inline-block rounded-md border border-purple-400/30 bg-purple-400/10 px-2 py-0.5 text-[10px] font-semibold text-purple-200">
+                    <span className="mb-1 inline-block rounded-md border border-purple-500/30 dark:border-purple-400/30 bg-purple-500/10 dark:bg-purple-400/10 px-2 py-0.5 text-[10px] font-semibold text-purple-700 dark:text-purple-200">
                       {selectedCertificate.badge}
                     </span>
                   )}
-                  <h3 className="truncate text-sm font-semibold text-white sm:text-base">
+                  <h3 className="truncate text-sm font-semibold text-slate-900 dark:text-white sm:text-base">
                     {selectedCertificate.title}
                   </h3>
 
-                  <p className="mt-0.5 text-xs text-slate-400">
+                  <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
                     {selectedCertificate.issuer} · {selectedCertificate.date} · Credential ID: {selectedCertificate.credentialId}
                   </p>
                 </div>
@@ -375,7 +375,7 @@ function Certifications() {
                   <a
                     href={selectedCertificate.file}
                     download={selectedCertificate.downloadName || 'certificate.pdf'}
-                    className="flex items-center gap-1.5 rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-3 py-1.5 text-xs font-medium text-cyan-200 transition hover:bg-cyan-400/20"
+                    className="flex items-center gap-1.5 rounded-lg border border-cyan-500/30 dark:border-cyan-400/30 bg-cyan-500/10 dark:bg-cyan-400/10 px-3 py-1.5 text-xs font-semibold text-cyan-700 dark:text-cyan-200 transition hover:bg-cyan-500/20 dark:hover:bg-cyan-400/20"
                     title="Download Certificate"
                   >
                     <svg
@@ -397,7 +397,7 @@ function Certifications() {
                   <button
                     type="button"
                     onClick={closeCertificate}
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 text-slate-400 transition-all duration-200 hover:border-cyan-300/30 hover:bg-white/5 hover:text-white"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400 transition-all duration-200 hover:border-cyan-500/30 dark:hover:border-cyan-300/30 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white"
                     aria-label="Close certificate"
                   >
                     ✕
@@ -406,7 +406,7 @@ function Certifications() {
               </div>
 
               {/* Certificate content */}
-              <div className="min-h-0 flex-1 overflow-auto bg-[#111827] p-3 sm:p-6">
+              <div className="min-h-0 flex-1 overflow-auto bg-slate-100 dark:bg-[#111827] p-3 sm:p-6">
                 {selectedCertificate.type === 'image' ? (
                   <div className="flex min-h-full items-center justify-center">
                     <img
@@ -420,13 +420,13 @@ function Certifications() {
                   <iframe
                     src={selectedCertificate.file}
                     title={`${selectedCertificate.title} certificate`}
-                    className="h-[78vh] min-h-[500px] w-full rounded-lg border border-white/10 bg-white"
+                    className="h-[78vh] min-h-[500px] w-full rounded-lg border border-slate-200 dark:border-white/10 bg-white"
                   />
                 )}
               </div>
 
               {/* Modal footer */}
-              <div className="flex shrink-0 items-center justify-between border-t border-white/10 bg-[#080d18] px-6 py-3">
+              <div className="flex shrink-0 items-center justify-between border-t border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#080d18] px-6 py-3">
                 <span className="hidden text-xs text-slate-500 sm:block">
                   Press ESC or click outside to close
                 </span>
@@ -435,7 +435,7 @@ function Certifications() {
                   href={selectedCertificate.file}
                   target="_blank"
                   rel="noreferrer"
-                  className="ml-auto text-xs font-medium text-cyan-300 transition-colors hover:text-cyan-200"
+                  className="ml-auto text-xs font-medium text-cyan-600 dark:text-cyan-300 transition-colors hover:text-cyan-700 dark:hover:text-cyan-200"
                 >
                   Open full certificate in new tab ↗
                 </a>

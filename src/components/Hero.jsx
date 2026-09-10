@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import StarryName from './StarryName'
 
 function Hero() {
   const [activeTab, setActiveTab] = useState('forecast') // 'forecast' | 'llm' | 'paging'
@@ -74,9 +75,9 @@ function Hero() {
       id="home"
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 sm:px-6 pb-12 pt-20 sm:pt-24 lg:pt-28"
     >
-      {/* Subtle Architectural Dot Grid — removes black void without clutter */}
+      {/* Subtle Architectural Dot Grid */}
       <div 
-        className="pointer-events-none absolute inset-0 opacity-[0.14]"
+        className="pointer-events-none absolute inset-0 opacity-[0.18] dark:opacity-[0.14]"
         style={{
           backgroundImage: 'radial-gradient(circle at center, rgba(56, 189, 248, 0.45) 1px, transparent 1px)',
           backgroundSize: '36px 36px',
@@ -86,8 +87,8 @@ function Hero() {
       />
 
       {/* Atmospheric Ambient Glows - GPU Accelerated */}
-      <div className="pointer-events-none absolute -left-20 top-1/4 h-[450px] w-[450px] rounded-full [background:radial-gradient(circle,rgba(6,182,212,0.1)_0%,transparent_70%)]" />
-      <div className="pointer-events-none absolute -right-20 top-1/3 h-[450px] w-[450px] rounded-full [background:radial-gradient(circle,rgba(147,51,234,0.1)_0%,transparent_70%)]" />
+      <div className="pointer-events-none absolute -left-20 top-1/4 h-[450px] w-[450px] rounded-full [background:radial-gradient(circle,rgba(6,182,212,0.12)_0%,transparent_70%)]" />
+      <div className="pointer-events-none absolute -right-20 top-1/3 h-[450px] w-[450px] rounded-full [background:radial-gradient(circle,rgba(147,51,234,0.12)_0%,transparent_70%)]" />
 
       <div className="mx-auto grid w-full max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1440px] items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
 
@@ -99,40 +100,37 @@ function Hero() {
           className="relative z-10 lg:col-span-7 gpu-accelerated"
         >
           {/* Status Pill */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-950/40 px-3.5 py-1 shadow-[0_0_20px_rgba(34,211,238,0.15)] backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 dark:border-cyan-400/30 bg-cyan-50/80 dark:bg-cyan-950/40 px-3.5 py-1 shadow-sm dark:shadow-[0_0_20px_rgba(34,211,238,0.15)] backdrop-blur-md">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-500 dark:bg-cyan-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500 dark:bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />
             </span>
-            <span className="font-mono text-[11px] font-semibold tracking-wider text-cyan-300">
+            <span className="font-mono text-[11px] font-semibold tracking-wider text-cyan-800 dark:text-cyan-300">
               AI / ML ENGINEER &amp; SYSTEMS ARCHITECT
             </span>
           </div>
 
-          {/* Name Heading */}
-          <h1 className="mt-4 text-4xl sm:text-6xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight text-white">
-            Arun{' '}
-            <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(34,211,238,0.25)]">
-              Prashath
-            </span>
-          </h1>
+          {/* Name Heading with Interactive Starry Sky Hover Effect */}
+          <div className="mt-3">
+            <StarryName />
+          </div>
 
           {/* Subheading / Tagline */}
-          <p className="mt-3 text-lg sm:text-xl lg:text-2xl font-semibold tracking-tight text-cyan-200/90">
+          <p className="mt-3 text-lg sm:text-xl lg:text-2xl font-semibold tracking-tight text-cyan-800 dark:text-cyan-200/90">
             Building intelligence one system at a time.
           </p>
 
-          <p className="mt-3 max-w-xl text-sm sm:text-base leading-relaxed text-slate-300">
-            Computer Science undergraduate specializing in <span className="text-white font-medium">predictive time-series forecasting</span>,{' '}
-            <span className="text-white font-medium">conversational LLM architectures</span>, and{' '}
-            <span className="text-white font-medium">high-performance systems</span>.
+          <p className="mt-3 max-w-xl text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
+            Computer Science undergraduate specializing in <span className="text-slate-900 dark:text-white font-medium">predictive time-series forecasting</span>,{' '}
+            <span className="text-slate-900 dark:text-white font-medium">conversational LLM architectures</span>, and{' '}
+            <span className="text-slate-900 dark:text-white font-medium">high-performance systems</span>.
           </p>
 
           {/* Action CTAs */}
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <a
               href="#projects"
-              className="flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 transition-all hover:bg-slate-100 hover:scale-105 active:scale-95"
+              className="flex items-center gap-2 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-950 px-5 py-2.5 text-sm font-semibold shadow-md shadow-slate-900/10 dark:shadow-white/10 transition-all hover:bg-slate-800 dark:hover:bg-slate-100 hover:scale-105 active:scale-95"
             >
               <span>Explore Projects</span>
               <span className="text-xs">↓</span>
@@ -141,7 +139,7 @@ function Hero() {
             <a
               href="./resume.pdf"
               download="Arun_Prashath_Resume.pdf"
-              className="group flex items-center gap-2 rounded-xl border border-cyan-400/40 bg-gradient-to-r from-cyan-400/15 via-blue-500/15 to-purple-500/15 px-5 py-2.5 text-sm font-medium text-cyan-200 shadow-[0_0_20px_rgba(34,211,238,0.15)] backdrop-blur-xl transition-all hover:border-cyan-300 hover:from-cyan-400/25 hover:shadow-[0_0_25px_rgba(34,211,238,0.25)] hover:scale-105 active:scale-95"
+              className="group flex items-center gap-2 rounded-xl border border-cyan-500/40 dark:border-cyan-400/40 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 dark:from-cyan-400/15 dark:via-blue-500/15 dark:to-purple-500/15 px-5 py-2.5 text-sm font-medium text-cyan-800 dark:text-cyan-200 shadow-sm dark:shadow-[0_0_20px_rgba(34,211,238,0.15)] backdrop-blur-xl transition-all hover:border-cyan-400 dark:hover:border-cyan-300 hover:from-cyan-500/20 dark:hover:from-cyan-400/25 hover:scale-105 active:scale-95"
             >
               <svg
                 className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5"
@@ -157,7 +155,7 @@ function Hero() {
                 />
               </svg>
               <span>Download Resume</span>
-              <span className="rounded border border-cyan-400/30 bg-cyan-400/10 px-1.5 py-0.5 font-mono text-[10px] text-cyan-300">
+              <span className="rounded border border-cyan-500/30 dark:border-cyan-400/30 bg-cyan-500/10 dark:bg-cyan-400/10 px-1.5 py-0.5 font-mono text-[10px] text-cyan-800 dark:text-cyan-300">
                 PDF
               </span>
             </a>
@@ -166,7 +164,7 @@ function Hero() {
               href="https://github.com/arunprashath06"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-300 backdrop-blur-xl transition-all hover:border-white/25 hover:bg-white/10 hover:text-white"
+              className="flex items-center gap-1.5 rounded-xl border border-slate-300 dark:border-white/10 bg-white/70 dark:bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 backdrop-blur-xl transition-all hover:border-slate-400 dark:hover:border-white/25 hover:text-slate-950 dark:hover:text-white hover:bg-white/90 dark:hover:bg-white/10"
             >
               <span>GitHub</span>
               <span className="text-xs">↗</span>
@@ -175,31 +173,31 @@ function Hero() {
 
           {/* Metric Telemetry Cards */}
           <div className="mt-7 grid grid-cols-3 gap-3 pt-1">
-            <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 sm:p-3.5 backdrop-blur-md transition-all duration-300 hover:border-cyan-400/40 hover:bg-white/[0.05]">
+            <div className="rounded-xl border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] p-3 sm:p-3.5 backdrop-blur-md shadow-sm dark:shadow-none transition-all duration-300 hover:border-cyan-500/40 hover:bg-white/90 dark:hover:bg-white/[0.05]">
               <div className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                <p className="font-mono text-[10px] uppercase tracking-wider text-slate-400">Accuracy</p>
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400" />
+                <p className="font-mono text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Accuracy</p>
               </div>
-              <p className="mt-0.5 font-mono text-xl sm:text-2xl font-bold tracking-tight text-white">92.4%</p>
-              <p className="text-[10px] sm:text-[11px] text-slate-400">Demand Model</p>
+              <p className="mt-0.5 font-mono text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">92.4%</p>
+              <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400">Demand Model</p>
             </div>
 
-            <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 sm:p-3.5 backdrop-blur-md transition-all duration-300 hover:border-emerald-400/40 hover:bg-white/[0.05]">
+            <div className="rounded-xl border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] p-3 sm:p-3.5 backdrop-blur-md shadow-sm dark:shadow-none transition-all duration-300 hover:border-emerald-500/40 hover:bg-white/90 dark:hover:bg-white/[0.05]">
               <div className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                <p className="font-mono text-[10px] uppercase tracking-wider text-slate-400">Latency</p>
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
+                <p className="font-mono text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Latency</p>
               </div>
-              <p className="mt-0.5 font-mono text-xl sm:text-2xl font-bold tracking-tight text-white">&lt;150ms</p>
-              <p className="text-[10px] sm:text-[11px] text-slate-400">Groq LLM</p>
+              <p className="mt-0.5 font-mono text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">&lt;150ms</p>
+              <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400">Groq LLM</p>
             </div>
 
-            <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 sm:p-3.5 backdrop-blur-md transition-all duration-300 hover:border-purple-400/40 hover:bg-white/[0.05]">
+            <div className="rounded-xl border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] p-3 sm:p-3.5 backdrop-blur-md shadow-sm dark:shadow-none transition-all duration-300 hover:border-purple-500/40 hover:bg-white/90 dark:hover:bg-white/[0.05]">
               <div className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-purple-400" />
-                <p className="font-mono text-[10px] uppercase tracking-wider text-slate-400">Systems</p>
+                <span className="h-1.5 w-1.5 rounded-full bg-purple-500 dark:bg-purple-400" />
+                <p className="font-mono text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">Systems</p>
               </div>
-              <p className="mt-0.5 font-mono text-xl sm:text-2xl font-bold tracking-tight text-white">4 Core</p>
-              <p className="text-[10px] sm:text-[11px] text-slate-400">Deployed Systems</p>
+              <p className="mt-0.5 font-mono text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">4 Core</p>
+              <p className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400">Deployed Systems</p>
             </div>
           </div>
         </motion.div>
@@ -218,33 +216,33 @@ function Hero() {
           <div 
             onTouchStart={handleConsoleTouchStart}
             onTouchEnd={handleConsoleTouchEnd}
-            className="relative rounded-2xl border border-cyan-500/25 bg-slate-950/90 p-1 shadow-[0_0_60px_rgba(34,211,238,0.14)] backdrop-blur-md touch-pan-y"
+            className="relative rounded-2xl border border-slate-200 dark:border-cyan-500/25 bg-white/95 dark:bg-slate-950/90 p-1 shadow-xl dark:shadow-[0_0_60px_rgba(34,211,238,0.14)] backdrop-blur-md touch-pan-y transition-colors"
           >
             
             {/* Terminal Top Window Bar */}
-            <div className="flex items-center justify-between border-b border-slate-800/80 px-4 py-3">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800/80 px-4 py-3">
               <div className="flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
-                <span className="ml-2 font-mono text-[11px] text-slate-400">
+                <span className="ml-2 font-mono text-[11px] text-slate-500 dark:text-slate-400">
                   sandbox.telemetry.local
                 </span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="font-mono text-[10px] text-emerald-400">LIVE</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
+                <span className="font-mono text-[10px] text-emerald-600 dark:text-emerald-400">LIVE</span>
               </div>
             </div>
 
             {/* Interactive System Tabs */}
-            <div className="grid grid-cols-3 border-b border-slate-800/70 bg-slate-900/40 p-1">
+            <div className="grid grid-cols-3 border-b border-slate-200 dark:border-slate-800/70 bg-slate-100/80 dark:bg-slate-900/40 p-1">
               <button
                 onClick={() => setActiveTab('forecast')}
                 className={`flex items-center justify-center gap-1.5 rounded-lg py-2 font-mono text-xs transition-all ${
                   activeTab === 'forecast'
-                    ? 'bg-cyan-500/20 text-cyan-300 font-medium shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-cyan-500/15 text-cyan-800 dark:bg-cyan-500/20 dark:text-cyan-300 font-medium shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
                 <span>📈</span>
@@ -255,8 +253,8 @@ function Hero() {
                 onClick={() => setActiveTab('llm')}
                 className={`flex items-center justify-center gap-1.5 rounded-lg py-2 font-mono text-xs transition-all ${
                   activeTab === 'llm'
-                    ? 'bg-purple-500/20 text-purple-300 font-medium shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-purple-500/15 text-purple-800 dark:bg-purple-500/20 dark:text-purple-300 font-medium shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
                 <span>🧠</span>
@@ -267,8 +265,8 @@ function Hero() {
                 onClick={() => setActiveTab('paging')}
                 className={`flex items-center justify-center gap-1.5 rounded-lg py-2 font-mono text-xs transition-all ${
                   activeTab === 'paging'
-                    ? 'bg-blue-500/20 text-blue-300 font-medium shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-blue-500/15 text-blue-800 dark:bg-blue-500/20 dark:text-blue-300 font-medium shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
                 <span>⚡</span>
@@ -291,16 +289,16 @@ function Hero() {
                   >
                     <div className="flex items-center justify-between text-xs">
                       <div>
-                        <span className="font-mono text-slate-400">Dataset: </span>
-                        <span className="font-mono text-white">Walmart Store 1 / Dept 1</span>
+                        <span className="font-mono text-slate-500 dark:text-slate-400">Dataset: </span>
+                        <span className="font-mono text-slate-900 dark:text-white font-medium">Walmart Store 1 / Dept 1</span>
                       </div>
-                      <span className="rounded bg-cyan-400/10 px-2 py-0.5 font-mono text-[11px] text-cyan-300">
+                      <span className="rounded bg-cyan-500/10 dark:bg-cyan-400/10 px-2 py-0.5 font-mono text-[11px] text-cyan-700 dark:text-cyan-300">
                         12-Wk Forecast
                       </span>
                     </div>
 
                     {/* SVG Forecast Curve */}
-                    <div className="relative rounded-xl border border-slate-800 bg-slate-900/60 p-3">
+                    <div className="relative rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/60 p-3">
                       <svg viewBox="0 0 320 120" className="h-32 w-full">
                         <defs>
                           <linearGradient id="heroGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -309,9 +307,9 @@ function Hero() {
                           </linearGradient>
                         </defs>
                         {/* Grid lines */}
-                        <line x1="0" y1="30" x2="320" y2="30" stroke="#334155" strokeDasharray="3 3" opacity="0.4" />
-                        <line x1="0" y1="65" x2="320" y2="65" stroke="#334155" strokeDasharray="3 3" opacity="0.4" />
-                        <line x1="0" y1="100" x2="320" y2="100" stroke="#334155" strokeDasharray="3 3" opacity="0.4" />
+                        <line x1="0" y1="30" x2="320" y2="30" stroke="#94a3b8" strokeDasharray="3 3" opacity="0.3" />
+                        <line x1="0" y1="65" x2="320" y2="65" stroke="#94a3b8" strokeDasharray="3 3" opacity="0.3" />
+                        <line x1="0" y1="100" x2="320" y2="100" stroke="#94a3b8" strokeDasharray="3 3" opacity="0.3" />
 
                         {/* Confidence interval band */}
                         <path
@@ -326,18 +324,18 @@ function Hero() {
                           transition={{ duration: 1.2, ease: "easeOut" }}
                           d="M 10 80 Q 60 55 110 75 T 210 55 T 310 45"
                           fill="none"
-                          stroke="#22d3ee"
+                          stroke="#0891b2"
                           strokeWidth="2.5"
                           strokeLinecap="round"
                         />
 
                         {/* Standard data points */}
-                        <circle cx="10" cy="80" r="3" fill="#22d3ee" />
-                        <circle cx="60" cy="55" r="3" fill="#22d3ee" />
-                        <circle cx="110" cy="75" r="3" fill="#22d3ee" />
-                        <circle cx="160" cy="62" r="3" fill="#22d3ee" />
-                        <circle cx="210" cy="55" r="3" fill="#22d3ee" />
-                        <circle cx="260" cy="48" r="3" fill="#22d3ee" />
+                        <circle cx="10" cy="80" r="3" fill="#0891b2" />
+                        <circle cx="60" cy="55" r="3" fill="#0891b2" />
+                        <circle cx="110" cy="75" r="3" fill="#0891b2" />
+                        <circle cx="160" cy="62" r="3" fill="#0891b2" />
+                        <circle cx="210" cy="55" r="3" fill="#0891b2" />
+                        <circle cx="260" cy="48" r="3" fill="#0891b2" />
 
                         {/* Interactive Anomaly Point */}
                         {anomalyActive ? (
@@ -355,21 +353,21 @@ function Hero() {
                       </svg>
 
                       {/* Tooltip badge inside chart */}
-                      <div className="mt-2 flex items-center justify-between font-mono text-[10px] text-slate-400">
+                      <div className="mt-2 flex items-center justify-between font-mono text-[10px] text-slate-500 dark:text-slate-400">
                         <span>Seasonality: Yearly + Weekly</span>
-                        <span className="text-cyan-300">Confidence: 95%</span>
+                        <span className="text-cyan-700 dark:text-cyan-300">Confidence: 95%</span>
                       </div>
                     </div>
 
                     {/* Interactive Trigger Button */}
                     <div className="flex items-center justify-between gap-3 pt-1">
-                      <span className="text-xs text-slate-400">Isolation Forest Spike:</span>
+                      <span className="text-xs text-slate-600 dark:text-slate-400">Isolation Forest Spike:</span>
                       <button
                         onClick={() => setAnomalyActive(!anomalyActive)}
                         className={`rounded-lg px-3 py-1.5 font-mono text-xs font-medium transition-all ${
                           anomalyActive
-                            ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
-                            : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white'
+                            ? 'bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/40'
+                            : 'bg-slate-200 text-slate-800 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-white'
                         }`}
                       >
                         {anomalyActive ? 'Reset Anomaly' : '⚡ Simulate Surge Spike'}
@@ -389,38 +387,38 @@ function Hero() {
                     className="space-y-3"
                   >
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-mono text-purple-300">Model: llama-3.1-8b-instant</span>
-                      <span className="font-mono text-emerald-400">Latency: 142ms</span>
+                      <span className="font-mono text-purple-700 dark:text-purple-300">Model: llama-3.1-8b-instant</span>
+                      <span className="font-mono text-emerald-600 dark:text-emerald-400">Latency: 142ms</span>
                     </div>
 
                     {/* Chat Input & Regex Extraction */}
-                    <div className="rounded-xl border border-purple-500/20 bg-slate-900/70 p-3 space-y-2">
-                      <div className="font-mono text-[11px] text-slate-400">User Natural Language Query:</div>
-                      <div className="rounded-lg bg-slate-950/80 p-2 text-xs font-mono text-purple-200">
+                    <div className="rounded-xl border border-purple-300 dark:border-purple-500/20 bg-purple-50/50 dark:bg-slate-900/70 p-3 space-y-2">
+                      <div className="font-mono text-[11px] text-slate-600 dark:text-slate-400">User Natural Language Query:</div>
+                      <div className="rounded-lg bg-white dark:bg-slate-950/80 p-2 text-xs font-mono text-purple-900 dark:text-purple-200 border border-purple-200 dark:border-transparent">
                         &quot;Front load washing machine under 25k for a family of 4&quot;
                       </div>
 
                       <div className="flex flex-wrap gap-1.5 pt-1">
-                        <span className="rounded bg-purple-900/40 px-2 py-0.5 font-mono text-[10px] text-purple-300 border border-purple-700/30">
+                        <span className="rounded bg-purple-100 dark:bg-purple-900/40 px-2 py-0.5 font-mono text-[10px] text-purple-800 dark:text-purple-300 border border-purple-300 dark:border-purple-700/30">
                           Budget: ≤ ₹25,000
                         </span>
-                        <span className="rounded bg-blue-900/40 px-2 py-0.5 font-mono text-[10px] text-blue-300 border border-blue-700/30">
+                        <span className="rounded bg-blue-100 dark:bg-blue-900/40 px-2 py-0.5 font-mono text-[10px] text-blue-800 dark:text-blue-300 border border-blue-300 dark:border-blue-700/30">
                           Type: Front Load
                         </span>
-                        <span className="rounded bg-cyan-900/40 px-2 py-0.5 font-mono text-[10px] text-cyan-300 border border-cyan-700/30">
+                        <span className="rounded bg-cyan-100 dark:bg-cyan-900/40 px-2 py-0.5 font-mono text-[10px] text-cyan-800 dark:text-cyan-300 border border-cyan-300 dark:border-cyan-700/30">
                           Capacity: 7kg
                         </span>
                       </div>
                     </div>
 
                     {/* AI Recommender Output */}
-                    <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-3 text-xs space-y-1.5">
-                      <div className="flex items-center justify-between font-mono text-[10px] text-slate-400">
+                    <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 p-3 text-xs space-y-1.5 shadow-sm dark:shadow-none">
+                      <div className="flex items-center justify-between font-mono text-[10px] text-slate-500 dark:text-slate-400">
                         <span>Top Match (Cosine: 0.942):</span>
-                        <span className="text-emerald-400">In Stock</span>
+                        <span className="text-emerald-600 dark:text-emerald-400">In Stock</span>
                       </div>
-                      <p className="font-medium text-white">Samsung 6.5 kg Hygiene Steam Front Load</p>
-                      <p className="font-mono text-[11px] text-slate-400">₹22,990 · 5★ Energy · Ceramic Heater</p>
+                      <p className="font-medium text-slate-900 dark:text-white">Samsung 6.5 kg Hygiene Steam Front Load</p>
+                      <p className="font-mono text-[11px] text-slate-500 dark:text-slate-400">₹22,990 · 5★ Energy · Ceramic Heater</p>
                     </div>
                   </motion.div>
                 )}
@@ -441,8 +439,8 @@ function Hero() {
                           onClick={() => setPagingAlgorithm('LRU')}
                           className={`rounded px-2 py-0.5 font-mono text-[11px] ${
                             pagingAlgorithm === 'LRU'
-                              ? 'bg-blue-500/30 text-blue-300 font-bold border border-blue-500/40'
-                              : 'text-slate-400 hover:text-white'
+                              ? 'bg-blue-500/20 text-blue-700 dark:text-blue-300 font-bold border border-blue-400 dark:border-blue-500/40'
+                              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                           }`}
                         >
                           LRU
@@ -451,14 +449,14 @@ function Hero() {
                           onClick={() => setPagingAlgorithm('FIFO')}
                           className={`rounded px-2 py-0.5 font-mono text-[11px] ${
                             pagingAlgorithm === 'FIFO'
-                              ? 'bg-blue-500/30 text-blue-300 font-bold border border-blue-500/40'
-                              : 'text-slate-400 hover:text-white'
+                              ? 'bg-blue-500/20 text-blue-700 dark:text-blue-300 font-bold border border-blue-400 dark:border-blue-500/40'
+                              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                           }`}
                         >
                           FIFO
                         </button>
                       </div>
-                      <span className="font-mono text-[11px] text-cyan-300">
+                      <span className="font-mono text-[11px] text-cyan-700 dark:text-cyan-300">
                         Step: {pageStep + 1} / {refString.length}
                       </span>
                     </div>
@@ -470,10 +468,10 @@ function Hero() {
                           key={idx}
                           className={`flex h-7 w-7 items-center justify-center rounded font-mono text-xs font-bold transition-all ${
                             idx === pageStep
-                              ? 'bg-blue-500 text-white scale-110 shadow-md shadow-blue-500/30'
+                              ? 'bg-blue-600 text-white scale-110 shadow-md shadow-blue-500/30'
                               : idx < pageStep
-                              ? 'bg-slate-800/80 text-slate-400'
-                              : 'bg-slate-900/60 text-slate-600'
+                              ? 'bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-400'
+                              : 'bg-slate-100 dark:bg-slate-900/60 text-slate-400 dark:text-slate-600'
                           }`}
                         >
                           {num}
@@ -482,15 +480,15 @@ function Hero() {
                     </div>
 
                     {/* Frame Registers */}
-                    <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-3">
+                    <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-3">
                       <div className="mb-2 flex items-center justify-between text-xs">
-                        <span className="font-mono text-slate-400">RAM Frame Allocation:</span>
+                        <span className="font-mono text-slate-500 dark:text-slate-400">RAM Frame Allocation:</span>
                         {currentFrame.hit ? (
-                          <span className="rounded bg-emerald-500/20 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-400">
+                          <span className="rounded bg-emerald-500/20 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
                             HIT ✓
                           </span>
                         ) : (
-                          <span className="rounded bg-rose-500/20 px-2 py-0.5 font-mono text-[10px] font-bold text-rose-400">
+                          <span className="rounded bg-rose-500/20 px-2 py-0.5 font-mono text-[10px] font-bold text-rose-600 dark:text-rose-400">
                             PAGE FAULT ✕
                           </span>
                         )}
@@ -500,10 +498,10 @@ function Hero() {
                         {currentFrame.frames.map((val, fIdx) => (
                           <div
                             key={fIdx}
-                            className="flex flex-col items-center rounded-lg border border-slate-700/50 bg-slate-950/70 py-2"
+                            className="flex flex-col items-center rounded-lg border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-950/70 py-2 shadow-sm dark:shadow-none"
                           >
                             <span className="font-mono text-[10px] text-slate-500">Frame {fIdx}</span>
-                            <span className="font-mono text-lg font-bold text-white">
+                            <span className="font-mono text-lg font-bold text-slate-900 dark:text-white">
                               {val === -1 ? '—' : val}
                             </span>
                           </div>
@@ -513,17 +511,17 @@ function Hero() {
 
                     {/* Step Controls */}
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-mono text-slate-400">Simulate Access:</span>
+                      <span className="font-mono text-slate-500 dark:text-slate-400">Simulate Access:</span>
                       <div className="flex gap-2">
                         <button
                           onClick={() => setPageStep((prev) => (prev > 0 ? prev - 1 : refString.length - 1))}
-                          className="rounded bg-slate-800 px-2.5 py-1 font-mono text-xs text-slate-300 hover:bg-slate-700"
+                          className="rounded bg-slate-200 text-slate-700 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 px-2.5 py-1 font-mono text-xs transition-colors"
                         >
                           ◀ Prev
                         </button>
                         <button
                           onClick={() => setPageStep((prev) => (prev + 1) % refString.length)}
-                          className="rounded bg-blue-600/30 border border-blue-500/40 px-2.5 py-1 font-mono text-xs text-blue-200 hover:bg-blue-600/50"
+                          className="rounded bg-blue-600/15 border border-blue-500/30 text-blue-700 dark:bg-blue-600/30 dark:border-blue-500/40 dark:text-blue-200 hover:bg-blue-600/25 dark:hover:bg-blue-600/50 px-2.5 py-1 font-mono text-xs transition-colors"
                         >
                           Next ▶
                         </button>
@@ -535,10 +533,10 @@ function Hero() {
             </div>
 
             {/* Bottom Telemetry Bar */}
-            <div className="flex items-center justify-between border-t border-slate-800/80 bg-slate-900/30 px-4 py-2 font-mono text-[10px] text-slate-500">
-              <span className="text-slate-400">Interactive Demo</span>
-              <span className="text-cyan-400 sm:hidden">Swipe ⇆ to switch tabs</span>
-              <span className="text-cyan-400 hidden sm:inline">Select tabs above</span>
+            <div className="flex items-center justify-between border-t border-slate-200 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-900/30 px-4 py-2 font-mono text-[10px] text-slate-500">
+              <span className="text-slate-500 dark:text-slate-400">Interactive Demo</span>
+              <span className="text-cyan-600 dark:text-cyan-400 sm:hidden">Swipe ⇆ to switch tabs</span>
+              <span className="text-cyan-600 dark:text-cyan-400 hidden sm:inline">Select tabs above</span>
             </div>
           </div>
         </motion.div>

@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react'
+import { ThemeProvider } from './context/ThemeContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 
@@ -16,11 +17,11 @@ const SectionFallback = () => (
   <div className="min-h-[400px] w-full flex items-center justify-center opacity-0" />
 )
 
-function App() {
+function AppContent() {
   return (
     <div
       id="top"
-      className="min-h-screen overflow-x-hidden bg-[#030712] text-white"
+      className="min-h-screen overflow-x-hidden bg-slate-50 dark:bg-[#030712] text-slate-900 dark:text-white transition-colors duration-300"
     >
       <Navbar />
 
@@ -60,13 +61,13 @@ function App() {
         </Suspense>
       </main>
 
-      <footer className="border-t border-white/5 px-6 py-8">
+      <footer className="border-t border-slate-200 dark:border-white/5 px-6 py-8 transition-colors">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 sm:flex-row">
-          <span className="text-xs text-slate-600">
+          <span className="text-xs text-slate-500 dark:text-slate-400">
             Arun Prashath · B.Tech CSE · AI & ML
           </span>
 
-          <span className="text-xs text-slate-600">
+          <span className="text-xs text-slate-500 dark:text-slate-400">
             © {new Date().getFullYear()} Arun Prashath. All rights reserved.
           </span>
         </div>
@@ -75,4 +76,10 @@ function App() {
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  )
+}

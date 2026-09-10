@@ -60,18 +60,18 @@ function Education() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
+          <p className="text-xs uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-300 font-mono">
             06 / Education
           </p>
 
-          <h2 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+          <h2 className="mt-5 max-w-4xl text-4xl font-semibold leading-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
             Academic{' '}
-            <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 dark:from-cyan-300 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
               foundation & growth.
             </span>
           </h2>
 
-          <p className="mt-6 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg">
+          <p className="mt-6 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-400 sm:text-lg">
             My educational background spanning Computer Science Engineering and pre-university studies.
           </p>
         </motion.div>
@@ -88,8 +88,8 @@ function Education() {
               whileHover={{ y: -4 }}
               className={`group relative overflow-hidden rounded-3xl border p-8 transition-all duration-300 sm:p-10 ${
                 edu.highlight
-                  ? 'border-cyan-400/30 bg-gradient-to-br from-cyan-950/20 via-slate-900/40 to-purple-950/20 shadow-[0_0_50px_rgba(34,211,238,0.06)] hover:border-cyan-300/50'
-                  : 'border-white/10 bg-white/[0.025] hover:border-white/20 hover:bg-white/[0.04]'
+                  ? 'border-cyan-500/30 dark:border-cyan-400/30 bg-gradient-to-br from-cyan-50/70 via-white to-purple-50/50 dark:from-cyan-950/20 dark:via-slate-900/40 dark:to-purple-950/20 shadow-md dark:shadow-[0_0_50px_rgba(34,211,238,0.06)] hover:border-cyan-400/60 dark:hover:border-cyan-300/50'
+                  : 'border-slate-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.025] hover:border-slate-300 dark:hover:border-white/20 hover:bg-white/90 dark:hover:bg-white/[0.04] shadow-sm dark:shadow-none'
               }`}
             >
               {/* Card ambient glow */}
@@ -99,7 +99,7 @@ function Education() {
                 <div>
                   {/* Period & Location badges */}
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3.5 py-1 text-xs font-medium text-cyan-300">
+                    <span className="rounded-full border border-cyan-500/30 dark:border-cyan-400/20 bg-cyan-500/10 dark:bg-cyan-400/10 px-3.5 py-1 text-xs font-semibold text-cyan-700 dark:text-cyan-300">
                       {edu.period}
                     </span>
 
@@ -109,20 +109,20 @@ function Education() {
                   </div>
 
                   {/* Institution Name */}
-                  <h3 className="mt-5 text-2xl font-semibold text-white sm:text-3xl">
+                  <h3 className="mt-5 text-2xl font-semibold text-slate-900 dark:text-white sm:text-3xl">
                     {edu.institution}
                   </h3>
 
                   {/* Degree & Major */}
-                  <p className="mt-2 text-base font-medium text-slate-300">
-                    {edu.degree} — <span className="text-cyan-400">{edu.field}</span>
+                  <p className="mt-2 text-base font-medium text-slate-700 dark:text-slate-300">
+                    {edu.degree} — <span className="text-cyan-600 dark:text-cyan-400">{edu.field}</span>
                   </p>
 
                   {/* Bullet Points */}
                   <ul className="mt-5 space-y-2">
                     {edu.details.map((detail, dIdx) => (
-                      <li key={dIdx} className="flex items-start gap-2.5 text-sm text-slate-400">
-                        <span className="mt-1 text-cyan-400">✦</span>
+                      <li key={dIdx} className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-400">
+                        <span className="mt-1 text-cyan-600 dark:text-cyan-400">✦</span>
                         <span>{detail}</span>
                       </li>
                     ))}
@@ -131,8 +131,8 @@ function Education() {
 
                 {/* Score badge box */}
                 <div className="flex items-start lg:items-center">
-                  <div className="rounded-2xl border border-white/10 bg-slate-950/80 p-5 text-center min-w-[150px] shadow-lg backdrop-blur-xl">
-                    <p className="text-3xl font-bold text-white bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+                  <div className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-slate-950/80 p-5 text-center min-w-[150px] shadow-sm dark:shadow-lg backdrop-blur-xl">
+                    <p className="text-3xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-300 dark:to-blue-400 bg-clip-text text-transparent">
                       {edu.score}
                     </p>
 

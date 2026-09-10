@@ -141,9 +141,9 @@ function Projects() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-xs uppercase tracking-[0.3em] text-cyan-300 font-mono"
+              className="text-xs uppercase tracking-[0.3em] text-cyan-700 dark:text-cyan-300 font-mono"
             >
-              02 / Projects
+              02 / Featured Projects
             </motion.p>
 
             <motion.h2
@@ -151,10 +151,10 @@ function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="mt-4 text-3xl font-semibold text-white sm:text-5xl lg:text-6xl"
+              className="mt-4 text-3xl font-semibold text-slate-900 dark:text-white sm:text-5xl lg:text-6xl"
             >
               Engineering{' '}
-              <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 dark:from-cyan-300 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                 real-world systems.
               </span>
             </motion.h2>
@@ -164,7 +164,7 @@ function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="mt-3 max-w-2xl text-sm sm:text-base lg:text-lg text-slate-400"
+              className="mt-3 max-w-2xl text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-400"
             >
               Real machine learning models, conversational LLM architectures, and algorithm
               simulators with authentic outputs, evaluation metrics, and source repositories.
@@ -172,7 +172,7 @@ function Projects() {
           </div>
 
           {/* Category Filter Tabs - Smooth swipeable on mobile */}
-          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar rounded-2xl border border-white/10 bg-slate-900/60 p-1.5 backdrop-blur-md max-w-full touch-pan-x">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar rounded-2xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-slate-900/60 p-1.5 shadow-sm dark:shadow-none backdrop-blur-md max-w-full touch-pan-x">
             {categories.map((cat) => {
               const isSelected = selectedCategory === cat
               return (
@@ -181,13 +181,13 @@ function Projects() {
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
                   className={`relative whitespace-nowrap rounded-xl px-3.5 sm:px-5 py-2 text-xs sm:text-sm font-medium transition-all ${
-                    isSelected ? 'text-white font-semibold' : 'text-slate-400 hover:text-slate-200'
+                    isSelected ? 'text-slate-900 dark:text-white font-semibold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                   }`}
                 >
                   {isSelected && (
                     <motion.span
                       layoutId="activeCategoryPill"
-                      className="absolute inset-0 rounded-xl border border-cyan-400/30 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 shadow-[0_0_15px_rgba(34,211,238,0.15)]"
+                      className="absolute inset-0 rounded-xl border border-cyan-500/30 dark:border-cyan-400/30 bg-gradient-to-r from-cyan-500/15 to-blue-500/15 dark:from-cyan-500/20 dark:to-blue-500/20 shadow-[0_0_15px_rgba(34,211,238,0.15)]"
                       transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                     />
                   )}
@@ -233,19 +233,19 @@ function Projects() {
                       }
                     }
                   }}
-                  className="group relative overflow-hidden rounded-2xl sm:rounded-[2.2rem] border border-white/10 bg-gradient-to-br from-slate-900/60 via-slate-950/80 to-[#050b18] p-4 sm:p-7 lg:p-10 shadow-2xl transition-all duration-300 hover:border-cyan-400/30 touch-pan-y gpu-accelerated"
+                  className="group relative overflow-hidden rounded-2xl sm:rounded-[2.2rem] border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-gradient-to-br dark:from-slate-900/60 dark:via-slate-950/80 dark:to-[#050b18] p-4 sm:p-7 lg:p-10 shadow-xl dark:shadow-2xl transition-all duration-300 hover:border-cyan-500/40 dark:hover:border-cyan-400/30 touch-pan-y gpu-accelerated"
                 >
                   {/* Subtle hover backlight */}
                   <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                   {/* Card Top: Number, Date & Badges */}
-                  <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-slate-800/80 pb-4 sm:pb-6">
+                  <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-slate-200 dark:border-slate-800/80 pb-4 sm:pb-6">
                     <div className="flex items-center gap-2 sm:gap-3">
-                      <span className="font-mono text-xs sm:text-sm font-bold tracking-widest text-cyan-400">
+                      <span className="font-mono text-xs sm:text-sm font-bold tracking-widest text-cyan-600 dark:text-cyan-400">
                         {project.number}
                       </span>
-                      <span className="text-slate-600">/</span>
-                      <span className="text-[11px] sm:text-xs uppercase tracking-wider text-slate-400 font-medium">
+                      <span className="text-slate-400 dark:text-slate-600">/</span>
+                      <span className="text-[11px] sm:text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-medium">
                         {project.category}
                       </span>
                     </div>
@@ -260,16 +260,16 @@ function Projects() {
                               [project.id]: currentView === 'output' ? 'secondary' : 'output',
                             }))
                           }
-                          className="rounded-full border border-cyan-400/30 bg-cyan-950/50 px-2.5 py-0.5 font-mono text-[10px] text-cyan-300 hover:bg-cyan-900/50 transition"
+                          className="rounded-full border border-cyan-500/30 dark:border-cyan-400/30 bg-cyan-50 dark:bg-cyan-950/50 px-2.5 py-0.5 font-mono text-[10px] text-cyan-800 dark:text-cyan-300 hover:bg-cyan-100 dark:hover:bg-cyan-900/50 transition"
                         >
                           {currentView === 'output' ? 'View 1/2 (Swipe ⇄)' : 'View 2/2 (Swipe ⇄)'}
                         </button>
                       )}
-                      <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-[10px] sm:text-[11px] text-slate-300">
+                      <span className="rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/5 px-2.5 py-0.5 font-mono text-[10px] sm:text-[11px] text-slate-700 dark:text-slate-300">
                         {project.date}
                       </span>
                       {project.badge && (
-                        <span className="rounded-full border border-cyan-400/25 bg-cyan-950/40 px-2.5 py-0.5 font-mono text-[10px] sm:text-[11px] font-medium text-cyan-300">
+                        <span className="rounded-full border border-cyan-500/25 dark:border-cyan-400/25 bg-cyan-50 dark:bg-cyan-950/40 px-2.5 py-0.5 font-mono text-[10px] sm:text-[11px] font-medium text-cyan-800 dark:text-cyan-300">
                           {project.badge}
                         </span>
                       )}
@@ -281,7 +281,7 @@ function Projects() {
                     
                     {/* LEFT COLUMN: Description, Highlights, Metrics (7 cols) */}
                     <div className="lg:col-span-7">
-                      <h3 className="text-xl font-semibold text-white sm:text-2xl lg:text-3xl break-words">
+                      <h3 className="text-xl font-semibold text-slate-900 dark:text-white sm:text-2xl lg:text-3xl break-words">
                         {project.title}
                       </h3>
 
@@ -290,7 +290,7 @@ function Projects() {
                         {project.highlights.map((h) => (
                           <span
                             key={h}
-                            className="rounded-lg border border-cyan-400/20 bg-cyan-950/30 px-2 sm:px-2.5 py-1 font-mono text-[10px] sm:text-[11px] text-cyan-300 break-words"
+                            className="rounded-lg border border-cyan-500/20 dark:border-cyan-400/20 bg-cyan-50/70 dark:bg-cyan-950/30 px-2 sm:px-2.5 py-1 font-mono text-[10px] sm:text-[11px] text-cyan-800 dark:text-cyan-300 break-words"
                           >
                             ✦ {h}
                           </span>
@@ -298,16 +298,16 @@ function Projects() {
                       </div>
 
                       {/* Description */}
-                      <p className="mt-4 text-xs sm:text-sm leading-relaxed text-slate-300 sm:text-base">
+                      <p className="mt-4 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300 sm:text-base">
                         {project.description}
                       </p>
 
                       {/* Metrics Summary Strip */}
-                      <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-2 rounded-xl border border-slate-800/80 bg-slate-950/60 p-2.5 sm:p-3">
+                      <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-2 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-950/60 p-2.5 sm:p-3">
                         {project.metrics.map((m) => (
                           <div key={m.label} className="text-center p-0.5 sm:p-1 overflow-hidden">
                             <p className="text-[9px] sm:text-[10px] uppercase font-mono text-slate-500 truncate">{m.label}</p>
-                            <p className="mt-0.5 font-mono text-xs sm:text-sm font-bold text-white truncate">{m.val}</p>
+                            <p className="mt-0.5 font-mono text-xs sm:text-sm font-bold text-slate-900 dark:text-white truncate">{m.val}</p>
                           </div>
                         ))}
                       </div>
@@ -317,7 +317,7 @@ function Projects() {
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-full border border-white/10 bg-white/5 px-2.5 sm:px-3 py-0.5 sm:py-1 font-mono text-[10px] sm:text-[11px] text-slate-400"
+                            className="rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/5 px-2.5 sm:px-3 py-0.5 sm:py-1 font-mono text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-400"
                           >
                             {tag}
                           </span>
@@ -331,7 +331,7 @@ function Projects() {
                             href={project.github}
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-2.5 text-xs font-semibold text-white backdrop-blur-md transition-all hover:border-cyan-400/40 hover:bg-white/15"
+                            className="flex items-center gap-2 rounded-xl border border-slate-300 dark:border-white/15 bg-slate-900 text-white dark:bg-white/10 dark:text-white px-4 py-2.5 text-xs font-semibold backdrop-blur-md transition-all hover:bg-slate-800 dark:hover:bg-white/15"
                           >
                             <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                               <path
@@ -348,7 +348,7 @@ function Projects() {
                         <button
                           type="button"
                           onClick={() => setLightboxData({ project, view: currentView })}
-                          className="flex items-center gap-1.5 rounded-xl border border-cyan-400/30 bg-cyan-950/40 px-4 py-2.5 text-xs font-semibold text-cyan-300 transition-all hover:bg-cyan-900/40"
+                          className="flex items-center gap-1.5 rounded-xl border border-cyan-500/30 dark:border-cyan-400/30 bg-cyan-50 dark:bg-cyan-950/40 px-4 py-2.5 text-xs font-semibold text-cyan-800 dark:text-cyan-300 transition-all hover:bg-cyan-100 dark:hover:bg-cyan-900/40"
                         >
                           <span>🔎 Full Output View</span>
                         </button>
@@ -357,12 +357,12 @@ function Projects() {
 
                     {/* RIGHT COLUMN: Real Output Visual Showcase (5 cols) */}
                     <div className="lg:col-span-5">
-                      <div className="overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-950/80 shadow-lg">
+                      <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700/60 bg-slate-50 dark:bg-slate-950/80 shadow-md dark:shadow-lg">
                         {/* Tab header on visual card */}
-                        <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/60 px-3.5 py-2">
+                        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/60 px-3.5 py-2">
                           <div className="flex items-center gap-1.5">
-                            <span className="h-2 w-2 rounded-full bg-cyan-400" />
-                            <span className="font-mono text-[11px] text-slate-300">
+                            <span className="h-2 w-2 rounded-full bg-cyan-500 dark:bg-cyan-400" />
+                            <span className="font-mono text-[11px] text-slate-700 dark:text-slate-300">
                               {currentView === 'output' ? 'Real Output' : 'Secondary Chart'}
                             </span>
                           </div>
@@ -373,7 +373,7 @@ function Projects() {
                                 type="button"
                                 onClick={() => setActiveViewTab((prev) => ({ ...prev, [project.id]: 'output' }))}
                                 className={`rounded px-2 py-0.5 font-mono text-[10px] transition-colors ${
-                                  currentView === 'output' ? 'bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-400/30' : 'text-slate-400 hover:text-white'
+                                  currentView === 'output' ? 'bg-cyan-500/20 text-cyan-800 dark:text-cyan-300 font-bold border border-cyan-500/30' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
                               >
                                 View 1
@@ -382,7 +382,7 @@ function Projects() {
                                 type="button"
                                 onClick={() => setActiveViewTab((prev) => ({ ...prev, [project.id]: 'secondary' }))}
                                 className={`rounded px-2 py-0.5 font-mono text-[10px] transition-colors ${
-                                  currentView === 'secondary' ? 'bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-400/30' : 'text-slate-400 hover:text-white'
+                                  currentView === 'secondary' ? 'bg-cyan-500/20 text-cyan-800 dark:text-cyan-300 font-bold border border-cyan-500/30' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                                 }`}
                               >
                                 View 2
@@ -393,7 +393,7 @@ function Projects() {
 
                         {/* Interactive Image Preview with touch swipe & zoom trigger */}
                         <div
-                          className="relative cursor-pointer group/img overflow-hidden bg-black/40 flex items-center justify-center p-2 min-h-[220px] touch-pan-y"
+                          className="relative cursor-pointer group/img overflow-hidden bg-slate-100/60 dark:bg-black/40 flex items-center justify-center p-2 min-h-[220px] touch-pan-y"
                           onClick={() => setLightboxData({ project, view: currentView })}
                           onTouchStart={(e) => {
                             setTouchState({ startX: e.touches[0].clientX, startY: e.touches[0].clientY })
@@ -427,8 +427,8 @@ function Projects() {
                         </div>
 
                         {/* Caption */}
-                        <div className="border-t border-slate-800/80 bg-slate-900/40 px-3.5 py-2">
-                          <p className="font-mono text-[11px] text-slate-400 truncate">
+                        <div className="border-t border-slate-200 dark:border-slate-800/80 bg-slate-100 dark:bg-slate-900/40 px-3.5 py-2">
+                          <p className="font-mono text-[11px] text-slate-600 dark:text-slate-400 truncate">
                             {currentView === 'output' ? project.realImageTitle : project.secondaryImageTitle}
                           </p>
                         </div>

@@ -55,7 +55,7 @@ function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-xs uppercase tracking-[0.3em] text-cyan-300"
+          className="text-xs uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-300 font-mono"
         >
           07 / Contact
         </motion.p>
@@ -68,11 +68,11 @@ function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7 }}
-              className="max-w-4xl text-5xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-7xl"
+              className="max-w-4xl text-5xl font-semibold leading-[1.05] text-slate-900 dark:text-white sm:text-6xl lg:text-7xl"
             >
               Let's build
               <br />
-              <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 dark:from-cyan-300 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                 something interesting.
               </span>
             </motion.h2>
@@ -82,7 +82,7 @@ function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg"
+              className="mt-6 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-400 sm:text-lg"
             >
               Have an idea, opportunity, internship, project or simply
               want to connect? Send me a message directly through the form or reach out through my channels.
@@ -94,23 +94,23 @@ function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="mt-8 flex flex-wrap items-center gap-4 rounded-2xl border border-cyan-400/20 bg-cyan-950/20 p-4 backdrop-blur-md"
+              className="mt-8 flex flex-wrap items-center gap-4 rounded-2xl border border-cyan-500/20 dark:border-cyan-400/20 bg-cyan-50/80 dark:bg-cyan-950/20 p-4 backdrop-blur-md"
             >
               <div className="flex items-center gap-2">
                 <span className="relative flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
                 </span>
-                <span className="text-xs font-semibold text-emerald-300">
+                <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
                   Available for Opportunities
                 </span>
               </div>
-              <span className="text-xs text-slate-500">·</span>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-slate-400">·</span>
+              <span className="text-xs text-slate-600 dark:text-slate-400">
                 AI / ML Engineer & Software Developer
               </span>
-              <span className="text-xs text-slate-500">·</span>
-              <span className="text-xs text-cyan-300 font-mono">
+              <span className="text-xs text-slate-400">·</span>
+              <span className="text-xs text-cyan-700 dark:text-cyan-300 font-mono">
                 📍 India (IST)
               </span>
             </motion.div>
@@ -128,7 +128,7 @@ function Contact() {
                     delay: index * 0.1,
                   }}
                   whileHover={{ x: 4 }}
-                  className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.02] px-5 py-4 transition-all duration-300 hover:border-cyan-300/20 hover:bg-white/[0.04]"
+                  className="group flex items-center justify-between rounded-xl border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.02] px-5 py-4 shadow-sm dark:shadow-none transition-all duration-300 hover:border-cyan-500/30 dark:hover:border-cyan-300/20 hover:bg-white/95 dark:hover:bg-white/[0.04] backdrop-blur-sm"
                 >
                   <a
                     href={link.href}
@@ -140,7 +140,7 @@ function Contact() {
                       {link.label}
                     </p>
 
-                    <p className="mt-1 truncate text-sm text-slate-300 transition-colors duration-300 group-hover:text-white">
+                    <p className="mt-1 truncate text-sm text-slate-800 dark:text-slate-300 transition-colors duration-300 group-hover:text-slate-950 dark:group-hover:text-white">
                       {link.value}
                     </p>
                   </a>
@@ -150,7 +150,7 @@ function Contact() {
                       <button
                         type="button"
                         onClick={handleCopyEmail}
-                        className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-slate-400 transition hover:border-cyan-400/30 hover:text-cyan-300"
+                        className="rounded-lg border border-slate-300 dark:border-white/10 bg-slate-100 dark:bg-white/5 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:text-slate-400 transition hover:border-cyan-500/30 dark:hover:border-cyan-400/30 hover:text-cyan-700 dark:hover:text-cyan-300"
                         title="Copy email address"
                       >
                         {copiedEmail ? 'Copied! ✓' : 'Copy'}
@@ -161,7 +161,7 @@ function Contact() {
                       href={link.href}
                       target={link.label === 'Email' ? undefined : '_blank'}
                       rel={link.label === 'Email' ? undefined : 'noreferrer'}
-                      className="text-slate-600 transition-colors duration-300 group-hover:text-cyan-300"
+                      className="text-slate-400 dark:text-slate-600 transition-colors duration-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-300"
                       aria-label={`Open ${link.label}`}
                     >
                       ↗
@@ -176,16 +176,16 @@ function Contact() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex items-center justify-between rounded-xl border border-cyan-400/20 bg-gradient-to-r from-cyan-950/30 to-purple-950/20 p-4 shadow-lg"
+                className="flex items-center justify-between rounded-xl border border-cyan-500/30 dark:border-cyan-400/20 bg-gradient-to-r from-cyan-50/80 to-purple-50/60 dark:from-cyan-950/30 dark:to-purple-950/20 p-4 shadow-sm dark:shadow-lg"
               >
                 <div>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-cyan-400 font-semibold">
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-400 font-semibold">
                     Curriculum Vitae
                   </p>
-                  <p className="mt-0.5 text-sm font-medium text-white">
+                  <p className="mt-0.5 text-sm font-semibold text-slate-900 dark:text-white">
                     Arun Prashath's Full Resume
                   </p>
-                  <p className="text-[11px] text-slate-400">
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400">
                     Official credentials, project links & email included in PDF
                   </p>
                 </div>
@@ -193,7 +193,7 @@ function Contact() {
                 <a
                   href="./resume.pdf"
                   download="Arun_Prashath_Resume.pdf"
-                  className="flex items-center gap-1.5 rounded-xl border border-cyan-400/30 bg-cyan-400/15 px-4 py-2.5 text-xs font-semibold text-cyan-200 transition hover:bg-cyan-400/25 hover:scale-105 active:scale-95"
+                  className="flex items-center gap-1.5 rounded-xl border border-cyan-500/30 dark:border-cyan-400/30 bg-cyan-500/10 dark:bg-cyan-400/15 px-4 py-2.5 text-xs font-semibold text-cyan-700 dark:text-cyan-200 transition hover:bg-cyan-500/20 dark:hover:bg-cyan-400/25 hover:scale-105 active:scale-95"
                 >
                   <svg
                     className="h-3.5 w-3.5"
@@ -220,7 +220,7 @@ function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8 }}
-            className="rounded-3xl border border-white/10 bg-white/[0.025] p-6 backdrop-blur-xl sm:p-8"
+            className="rounded-3xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-white/[0.025] p-6 backdrop-blur-xl sm:p-8 shadow-sm dark:shadow-none"
           >
             {state.succeeded ? (
               <motion.div
@@ -228,17 +228,17 @@ function Contact() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex min-h-[420px] flex-col items-center justify-center text-center"
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-cyan-300/20 bg-cyan-300/10">
-                  <span className="text-2xl text-cyan-300">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-cyan-500/20 dark:border-cyan-300/20 bg-cyan-500/10 dark:bg-cyan-300/10">
+                  <span className="text-2xl text-cyan-600 dark:text-cyan-300">
                     ✓
                   </span>
                 </div>
 
-                <h3 className="mt-6 text-2xl font-semibold text-white">
+                <h3 className="mt-6 text-2xl font-semibold text-slate-900 dark:text-white">
                   Message sent.
                 </h3>
 
-                <p className="mt-3 max-w-sm text-sm leading-6 text-slate-500">
+                <p className="mt-3 max-w-sm text-sm leading-6 text-slate-600 dark:text-slate-500">
                   Thanks for reaching out. I'll get back to you as soon
                   as possible.
                 </p>
@@ -246,11 +246,11 @@ function Contact() {
             ) : (
               <>
                 <div className="mb-8">
-                  <p className="text-xs uppercase tracking-[0.25em] text-cyan-300">
+                  <p className="text-xs uppercase tracking-[0.25em] text-cyan-600 dark:text-cyan-300 font-mono">
                     Send a message
                   </p>
 
-                  <h3 className="mt-3 text-2xl font-semibold text-white">
+                  <h3 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-white">
                     Start a conversation.
                   </h3>
                 </div>
@@ -263,7 +263,7 @@ function Contact() {
                   <div>
                     <label
                       htmlFor="name"
-                      className="mb-2 block text-xs text-slate-500"
+                      className="mb-2 block text-xs font-medium text-slate-600 dark:text-slate-500"
                     >
                       Name
                     </label>
@@ -274,7 +274,7 @@ function Contact() {
                       name="name"
                       required
                       placeholder="Your name"
-                      className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-700 transition focus:border-cyan-300/30 focus:bg-black/30"
+                      className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-black/20 px-4 py-3 text-sm text-slate-900 dark:text-white outline-none placeholder:text-slate-400 dark:placeholder:text-slate-700 transition focus:border-cyan-500 dark:focus:border-cyan-300/30 focus:bg-white dark:focus:bg-black/30"
                     />
                   </div>
 
@@ -282,7 +282,7 @@ function Contact() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="mb-2 block text-xs text-slate-500"
+                      className="mb-2 block text-xs font-medium text-slate-600 dark:text-slate-500"
                     >
                       Email
                     </label>
@@ -293,7 +293,7 @@ function Contact() {
                       name="email"
                       required
                       placeholder="you@example.com"
-                      className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-700 transition focus:border-cyan-300/30 focus:bg-black/30"
+                      className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-black/20 px-4 py-3 text-sm text-slate-900 dark:text-white outline-none placeholder:text-slate-400 dark:placeholder:text-slate-700 transition focus:border-cyan-500 dark:focus:border-cyan-300/30 focus:bg-white dark:focus:bg-black/30"
                     />
                   </div>
 
@@ -301,7 +301,7 @@ function Contact() {
                   <div>
                     <label
                       htmlFor="subject"
-                      className="mb-2 block text-xs text-slate-500"
+                      className="mb-2 block text-xs font-medium text-slate-600 dark:text-slate-500"
                     >
                       Subject
                     </label>
@@ -312,7 +312,7 @@ function Contact() {
                       name="subject"
                       required
                       placeholder="What would you like to discuss?"
-                      className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-700 transition focus:border-cyan-300/30 focus:bg-black/30"
+                      className="w-full rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-black/20 px-4 py-3 text-sm text-slate-900 dark:text-white outline-none placeholder:text-slate-400 dark:placeholder:text-slate-700 transition focus:border-cyan-500 dark:focus:border-cyan-300/30 focus:bg-white dark:focus:bg-black/30"
                     />
                   </div>
 
@@ -320,7 +320,7 @@ function Contact() {
                   <div>
                     <label
                       htmlFor="message"
-                      className="mb-2 block text-xs text-slate-500"
+                      className="mb-2 block text-xs font-medium text-slate-600 dark:text-slate-500"
                     >
                       Message
                     </label>
@@ -331,13 +331,13 @@ function Contact() {
                       required
                       rows="6"
                       placeholder="Write your message..."
-                      className="w-full resize-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-700 transition focus:border-cyan-300/30 focus:bg-black/30"
+                      className="w-full resize-none rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-black/20 px-4 py-3 text-sm text-slate-900 dark:text-white outline-none placeholder:text-slate-400 dark:placeholder:text-slate-700 transition focus:border-cyan-500 dark:focus:border-cyan-300/30 focus:bg-white dark:focus:bg-black/30"
                     />
                   </div>
 
                   {/* Error */}
                   {state.errors && (
-                    <div className="rounded-xl border border-red-400/20 bg-red-400/5 px-4 py-3 text-sm leading-6 text-red-300">
+                    <div className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm leading-6 text-red-600 dark:text-red-300">
                       Something went wrong while sending the message.
                       Please try again.
                     </div>
@@ -353,11 +353,11 @@ function Contact() {
                     whileTap={{
                       scale: state.submitting ? 1 : 0.98,
                     }}
-                    className="flex w-full items-center justify-center gap-3 rounded-xl bg-white px-5 py-3.5 text-sm font-medium text-slate-950 transition disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex w-full items-center justify-center gap-3 rounded-xl bg-slate-900 dark:bg-white px-5 py-3.5 text-sm font-semibold text-white dark:text-slate-950 shadow-md transition hover:bg-slate-800 dark:hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {state.submitting ? (
                       <>
-                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-slate-950/20 border-t-slate-950" />
+                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-slate-400 border-t-white dark:border-slate-950/20 dark:border-t-slate-950" />
                         Sending...
                       </>
                     ) : (
@@ -379,9 +379,9 @@ function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-20 border-t border-white/5 pt-6"
+          className="mt-20 border-t border-slate-200 dark:border-white/5 pt-6"
         >
-          <p className="text-xs tracking-wide text-slate-600">
+          <p className="text-xs tracking-wide text-slate-500 dark:text-slate-600">
             Arun Prashath · B.Tech CSE · AI & ML
           </p>
         </motion.div>
