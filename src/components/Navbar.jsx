@@ -43,12 +43,19 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed left-0 right-0 top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4"
-    >
+    <>
+      {/* Top viewport mask to prevent scrolled content from peeking through the top gap above the floating nav */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-x-0 top-0 z-40 h-20 sm:h-24 bg-gradient-to-b from-[#f8fafc] via-[#f8fafc]/95 to-transparent dark:from-[#030712] dark:via-[#030712]/95 transition-colors duration-300"
+      />
+
+      <motion.header
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed left-0 right-0 top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4"
+      >
       <nav
         className={`mx-auto flex max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1440px] items-center justify-between rounded-2xl border px-4 py-2 sm:px-6 sm:py-2.5 transition-all duration-300 ${
           isScrolled
@@ -227,6 +234,7 @@ function Navbar() {
         )}
       </AnimatePresence>
     </motion.header>
+    </>
   )
 }
 
