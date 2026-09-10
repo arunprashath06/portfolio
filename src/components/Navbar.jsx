@@ -43,24 +43,20 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
   return (
-    <>
-      {/* Top viewport mask to prevent scrolled content from peeking through the top gap above the floating nav */}
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4 pointer-events-none">
+      {/* Top backdrop shield: placed inside header at -z-10 behind the nav pill so scrolled content fades before reaching top gap */}
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-x-0 top-0 z-40 h-20 sm:h-24 bg-gradient-to-b from-[#f8fafc] via-[#f8fafc]/95 to-transparent dark:from-[#030712] dark:via-[#030712]/95 transition-colors duration-300"
+        className={`pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#f8fafc] via-[#f8fafc]/90 to-transparent dark:from-[#030712] dark:via-[#030712]/90 transition-opacity duration-300 -z-10 ${
+          isScrolled ? 'opacity-100' : 'opacity-0'
+        }`}
       />
 
-      <motion.header
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed left-0 right-0 top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4"
-      >
       <nav
-        className={`mx-auto flex max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1440px] items-center justify-between rounded-2xl border px-4 py-2 sm:px-6 sm:py-2.5 transition-all duration-300 ${
+        className={`pointer-events-auto mx-auto flex max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1440px] items-center justify-between rounded-2xl border px-4 py-2.5 sm:px-6 sm:py-3 transition-all duration-300 ${
           isScrolled
-            ? 'border-slate-200/80 dark:border-white/20 bg-white/90 dark:bg-[#030712]/95 shadow-lg dark:shadow-2xl shadow-slate-200/50 dark:shadow-black/60 backdrop-blur-2xl'
-            : 'border-slate-200/60 dark:border-white/10 bg-white/75 dark:bg-[#030712]/80 shadow-sm dark:shadow-none backdrop-blur-xl'
+            ? 'border-slate-200/80 dark:border-white/20 bg-white/95 dark:bg-[#030712]/95 shadow-xl dark:shadow-2xl shadow-slate-200/50 dark:shadow-black/70 backdrop-blur-2xl'
+            : 'border-slate-200/60 dark:border-white/10 bg-white/80 dark:bg-[#030712]/80 shadow-sm dark:shadow-none backdrop-blur-xl'
         }`}
       >
         {/* Logo & Brand Heading */}
@@ -193,7 +189,7 @@ function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="mt-2 overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-[#030712]/95 p-4 shadow-2xl backdrop-blur-2xl lg:hidden"
+            className="pointer-events-auto mt-2 overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-[#030712]/95 p-4 shadow-2xl backdrop-blur-2xl lg:hidden"
           >
             <div className="flex flex-col gap-1.5">
               {navItems.map((item) => (
@@ -233,8 +229,7 @@ function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
-    </>
+    </header>
   )
 }
 
