@@ -35,6 +35,7 @@ html.light body {
 
 html {
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
 }
 
 * {
@@ -46,13 +47,14 @@ html {
   color: white;
 }
 
-/* GPU hardware acceleration for smooth 60-120fps scrolling */
+/* GPU hardware acceleration for smooth 60-120fps scrolling on all modern browsers */
 .gpu-layer,
 .gpu-accelerated {
-  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   perspective: 1000px;
-  will-change: transform, opacity;
 }
 
 /* Offload off-screen DOM layout and paint to achieve butter-smooth 60-120fps scrolling */

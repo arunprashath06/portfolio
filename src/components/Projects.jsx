@@ -233,7 +233,7 @@ function Projects() {
                       }
                     }
                   }}
-                  className="group relative overflow-hidden rounded-2xl sm:rounded-[2.2rem] border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-gradient-to-br dark:from-slate-900/60 dark:via-slate-950/80 dark:to-[#050b18] p-4 sm:p-7 lg:p-10 shadow-xl dark:shadow-2xl transition-all duration-300 hover:border-cyan-500/40 dark:hover:border-cyan-400/30 touch-pan-y gpu-accelerated"
+                  className="group relative overflow-hidden rounded-2xl sm:rounded-[2.2rem] border border-slate-200 dark:border-white/10 bg-white/95 dark:bg-transparent dark:bg-gradient-to-br dark:from-slate-900/60 dark:via-slate-950/80 dark:to-[#050b18] p-4 sm:p-7 lg:p-10 shadow-xl dark:shadow-2xl transition-all duration-300 hover:border-cyan-500/40 dark:hover:border-cyan-400/30 touch-pan-y gpu-accelerated"
                 >
                   {/* Subtle hover backlight */}
                   <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -331,7 +331,7 @@ function Projects() {
                             href={project.github}
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center gap-2 rounded-xl border border-slate-300 dark:border-white/15 bg-slate-900 text-white dark:bg-white/10 dark:text-white px-4 py-2.5 text-xs font-semibold backdrop-blur-md transition-all hover:bg-slate-800 dark:hover:bg-white/15"
+                            className="flex items-center gap-2 rounded-xl border border-slate-300 dark:border-white/15 bg-slate-900 text-white dark:bg-white/10 dark:text-white px-4 py-2.5 text-xs font-semibold backdrop-blur-md transition-all hover:bg-slate-800 dark:hover:border-cyan-400/40 dark:hover:bg-white/15"
                           >
                             <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                               <path

@@ -131,7 +131,7 @@ function About() {
             <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-tr from-cyan-500/20 via-blue-500/10 to-purple-600/20 blur-2xl" />
 
             {/* Main Portrait Card Frame */}
-            <div className="relative w-full max-w-md overflow-hidden rounded-[2.5rem] border border-cyan-500/30 dark:border-cyan-400/25 bg-white/95 dark:bg-gradient-to-b dark:from-[#081020]/90 dark:to-[#030712]/95 p-6 shadow-xl dark:shadow-2xl backdrop-blur-xl transition-colors">
+            <div className="relative w-full max-w-md overflow-hidden rounded-[2.5rem] border border-cyan-500/30 dark:border-cyan-400/25 bg-white/95 dark:bg-transparent dark:bg-gradient-to-b dark:from-[#081020]/90 dark:to-[#030712]/95 p-6 shadow-xl dark:shadow-2xl backdrop-blur-xl transition-colors">
               {/* Corner accents */}
               <div className="absolute left-3 top-3 h-3 w-3 border-l-2 border-t-2 border-cyan-500/50 dark:border-cyan-400/50" />
               <div className="absolute right-3 top-3 h-3 w-3 border-r-2 border-t-2 border-cyan-500/50 dark:border-cyan-400/50" />

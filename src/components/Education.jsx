@@ -88,7 +88,7 @@ function Education() {
               whileHover={{ y: -4 }}
               className={`group relative overflow-hidden rounded-3xl border p-8 transition-all duration-300 sm:p-10 ${
                 edu.highlight
-                  ? 'border-cyan-500/30 dark:border-cyan-400/30 bg-gradient-to-br from-cyan-50/70 via-white to-purple-50/50 dark:from-cyan-950/20 dark:via-slate-900/40 dark:to-purple-950/20 shadow-md dark:shadow-[0_0_50px_rgba(34,211,238,0.06)] hover:border-cyan-400/60 dark:hover:border-cyan-300/50'
+                  ? 'border-cyan-500/30 dark:border-cyan-400/30 bg-white/90 dark:bg-transparent dark:bg-gradient-to-br dark:from-cyan-950/20 dark:via-slate-900/40 dark:to-purple-950/20 shadow-md dark:shadow-[0_0_50px_rgba(34,211,238,0.06)] hover:border-cyan-400/60 dark:hover:border-cyan-300/50'
                   : 'border-slate-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.025] hover:border-slate-300 dark:hover:border-white/20 hover:bg-white/90 dark:hover:bg-white/[0.04] shadow-sm dark:shadow-none'
               }`}
             >

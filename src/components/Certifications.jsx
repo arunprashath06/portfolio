@@ -229,7 +229,7 @@ function Certifications() {
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   whileHover={{ y: -6 }}
-                  className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-gradient-to-br dark:from-white/[0.035] dark:to-white/[0.01] p-6 transition-all duration-300 hover:border-cyan-400/40 dark:hover:border-cyan-300/30 hover:bg-white/95 dark:hover:bg-white/[0.05] shadow-sm dark:shadow-lg gpu-accelerated backdrop-blur-sm"
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-transparent dark:bg-gradient-to-br dark:from-white/[0.035] dark:to-white/[0.01] p-6 transition-all duration-300 hover:border-cyan-400/40 dark:hover:border-cyan-300/30 hover:bg-white/95 dark:hover:bg-white/[0.05] shadow-sm dark:shadow-lg gpu-accelerated backdrop-blur-sm"
                 >
                   {/* Hover glow */}
                   <div className="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-cyan-400/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

@@ -68,7 +68,7 @@ function Training() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-[2.5rem] border border-cyan-500/20 dark:border-cyan-400/20 bg-gradient-to-br from-cyan-50/60 via-white to-purple-50/50 dark:from-cyan-950/20 dark:via-slate-900/40 dark:to-purple-950/20 shadow-xl dark:shadow-[0_0_60px_rgba(34,211,238,0.08)] gpu-accelerated"
+            className="relative overflow-hidden rounded-[2.5rem] border border-cyan-500/20 dark:border-cyan-400/20 bg-white/95 dark:bg-transparent dark:bg-gradient-to-br dark:from-cyan-950/20 dark:via-slate-900/40 dark:to-purple-950/20 shadow-xl dark:shadow-[0_0_60px_rgba(34,211,238,0.08)] gpu-accelerated"
           >
             {/* Ambient glow inside card */}
             <div className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
