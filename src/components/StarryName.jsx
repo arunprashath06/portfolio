@@ -233,14 +233,26 @@ export default function StarryName() {
         ctx.restore()
       }
 
-      animationFrameRef.current = requestAnimationFrame(render)
+      // Only schedule next frame if still hovered or still fading out
+      if (isHovered || opacityRef.current > 0.005) {
+        animationFrameRef.current = requestAnimationFrame(render)
+      } else {
+        opacityRef.current = 0
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        animationFrameRef.current = null
+      }
     }
 
-    animationFrameRef.current = requestAnimationFrame(render)
+    if (isHovered || opacityRef.current > 0.005) {
+      if (!animationFrameRef.current) {
+        animationFrameRef.current = requestAnimationFrame(render)
+      }
+    }
 
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
+        animationFrameRef.current = null
       }
       window.removeEventListener('resize', updateDimensions)
     }
