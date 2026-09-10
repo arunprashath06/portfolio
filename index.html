@@ -1,13 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark" style="background-color: #030712;">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#030712" />
     <title>Arun Prashath | AI / ML Engineer & Systems Builder</title>
     <meta name="description" content="Portfolio of Arun Prashath - Computer Science & Engineering (AI/ML) student specializing in time-series forecasting, LLM architectures, and systems development." />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('portfolio_theme');
+          var isDark = saved ? saved === 'dark' : true;
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+            document.documentElement.style.backgroundColor = '#030712';
+          } else {
+            document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
+            document.documentElement.style.backgroundColor = '#f8fafc';
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body>
+  <body style="background-color: #030712;">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
