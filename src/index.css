@@ -54,12 +54,19 @@ html.light body {
 }
 
 
-/* Optimize heavy blur rendering across all browsers */
-[class*="blur-3xl"],
-[class*="blur-2xl"] {
-  contain: strict;
-  content-visibility: auto;
+/* Optimize heavy background blur glow orbs across all browsers without blocking clicks on backdrop-blur */
+.blur-3xl,
+.blur-2xl {
   pointer-events: none;
+}
+
+/* Smooth cross-fade when toggling between dark and light themes across all sections */
+body,
+nav,
+header,
+footer,
+section {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
 /* Crisp, high-performance frosted glass across mobile and desktop without GPU choking */

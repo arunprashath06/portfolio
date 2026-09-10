@@ -43,7 +43,7 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4 pointer-events-none">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4">
       {/* Top backdrop shield: placed inside header at -z-10 behind the nav pill so scrolled content fades before reaching top gap */}
       <div
         aria-hidden="true"
@@ -53,7 +53,7 @@ function Navbar() {
       />
 
       <nav
-        className={`pointer-events-auto mx-auto flex max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1440px] min-h-[64px] sm:min-h-[68px] items-center justify-between rounded-2xl border px-4 py-2 sm:px-6 sm:py-2.5 transition-all duration-300 ${
+        className={`mx-auto flex max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1440px] min-h-[64px] sm:min-h-[68px] items-center justify-between rounded-2xl border px-4 py-2 sm:px-6 sm:py-2.5 transition-all duration-300 ${
           isScrolled
             ? 'border-slate-200/80 dark:border-white/20 bg-white/95 dark:bg-[#030712]/95 shadow-xl dark:shadow-2xl shadow-slate-200/50 dark:shadow-black/70 backdrop-blur-2xl'
             : 'border-slate-200/60 dark:border-white/10 bg-white/80 dark:bg-[#030712]/80 shadow-sm dark:shadow-none backdrop-blur-xl'
