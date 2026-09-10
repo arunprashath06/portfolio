@@ -104,7 +104,6 @@ export default function StarryName() {
     updateDimensions()
     window.addEventListener('resize', updateDimensions)
 
-    let lastTime = 0
     let shootingStarCooldown = 120
 
     const render = (time) => {
